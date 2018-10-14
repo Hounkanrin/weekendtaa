@@ -1,0 +1,21 @@
+<h2>My Sports</h2>
+<ul class = "sports">
+  <li *ngFor="let sport of sports" [class.selected] = "sport === selectedSport" (click)="onSelect(sport)">
+    <span class="badge">{{ sport.id }} : </span> {{ sport.name }}
+  </li>
+</ul>
+
+<div *ngIf= "selectedSport">
+<h2>{{selectedSport.name | uppercase}} Details</h2>
+<div><span class ="sport_id">id: </span>{{selectedSport.id}}</div>
+<div>
+  <label>name:
+    <input [(ngModel)]="selectedSport.name" placeholder="name">
+  </label>
+</div>
+</div>
+<!-- <h1>Ajouter un Sport</h1>
+<form action="">
+  <div><label for=""></label>Nom<input type="text"></div>
+</form> -->
+

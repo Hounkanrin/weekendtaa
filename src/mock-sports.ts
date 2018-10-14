@@ -1,4 +1,4 @@
-import {Sport} from './selectedSport';
+import { Sport } from '.sport';
 
 export const Sports: Sport[] = [
   { id: 1, name: 'natation' },

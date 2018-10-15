@@ -11,14 +11,19 @@ export class SportService {
 
   constructor(private messageService: MessageService) { }
 
-  // getSportes(): Observable<Sport[]> {
+  // getSports(): Observable<Sport[]> {
   //   return of (SPORTS);
   // }
-  
+
   getSports(): Observable<Sport[]> {
     // TODO: send the message _after_ fetching the sports
-    this.messageService.add('SportService: fetched sports');
+    this.messageService.add(`SportService: fetched sports`);
     return of(SPORTS);
+  }
+
+  getSport(id: number): Observable<Sport> {
+    this.messageService.add(`SportService: fetched sport id=${id}`);
+    return of (SPORTS.find(sport => sport.id === id));
   }
 
 }

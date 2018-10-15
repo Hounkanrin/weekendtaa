@@ -10,7 +10,7 @@ import {SportService} from '../sport-service/sport.service';
 })
 export class SportsComponent implements OnInit {
   
-  sport: Sport;
+  // sport: Sport;
   sports: Sport [];
 
   constructor(private sportService: SportService ) { }
@@ -19,9 +19,9 @@ export class SportsComponent implements OnInit {
     this.getSports();
   }
 
-  onSelect(sport: Sport): void {
-    this.sport = sport;
-  }
+  // onSelect(sport: Sport): void {
+  //   this.sport = sport;
+  // }
 
   getSports(): void {
     this.sportService.getSports()

@@ -1,6 +1,6 @@
-import {Sport} from './selectedSport';
+import {Sport} from './sport';
 
-export const Sports: Sport[] = [
+export const SPORTS: Sport[] = [
   { id: 1, name: 'natation' },
   { id: 2, name: 'foot' },
   { id: 3, name: 'hand' },

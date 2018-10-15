@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Sport} from '../selectedSport';
-import {Sports} from '../mock-sports';
+import { Sport} from '../sport';
+import {SPORTS} from '../mock-sports';
+import {SportService} from '../sport-service/sport.service';
 
 @Component({
   selector: 'app-sports',
@@ -8,16 +9,23 @@ import {Sports} from '../mock-sports';
   styleUrls: ['./sports.component.css']
 })
 export class SportsComponent implements OnInit {
-  sports = Sports;
-  selectedSport: Sport;
+  
+  sport: Sport;
+  sports: Sport [];
 
-  constructor() { }
+  constructor(private sportService: SportService ) { }
 
   ngOnInit() {
-
+    this.getSports();
   }
+
   onSelect(sport: Sport): void {
-    this.selectedSport = sport;
+    this.sport = sport;
+  }
+
+  getSports(): void {
+    this.sportService.getSports()
+        .subscribe(sports => this.sports = sports);
   }
 
 }

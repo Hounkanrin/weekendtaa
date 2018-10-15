@@ -4,16 +4,18 @@
     <span class="badge">{{ sport.id }} : </span> {{ sport.name }}
   </li>
 </ul>
+<app-sport-detail [sport]="sport"></app-sport-detail>
 
-<div *ngIf= "selectedSport">
-<h2>{{selectedSport.name | uppercase}} Details</h2>
-<div><span class ="sport_id">id: </span>{{selectedSport.id}}</div>
+<!--  <div *ngIf= "Sport">
+<h2>{{Sport.name | uppercase}} Details</h2>
+<div><span class ="sport_id">id: </span>{{Sport.id}}</div>
 <div>
   <label>name:
-    <input [(ngModel)]="selectedSport.name" placeholder="name">
+    <input [(ngModel)]="Sport.name" placeholder="name">
   </label>
 </div>
-</div>
+</div>-->
+
 <!-- <h1>Ajouter un Sport</h1>
 <form action="">
   <div><label for=""></label>Nom<input type="text"></div>

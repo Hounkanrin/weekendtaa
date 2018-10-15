@@ -4,11 +4,15 @@ import { FormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SportsComponent } from './sports/sports.component';
+import { SportDetailComponent } from './sport-detail/sport-detail.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SportsComponent
+    SportsComponent,
+    SportDetailComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

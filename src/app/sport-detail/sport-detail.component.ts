@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Sport} from '../sport';
+import { Sport } from '../sport';
 import { from } from 'rxjs';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { SportService} from '../sport-service/sport.service';
+import { SportService } from '../sport-service/sport.service';
 
 @Component({
   selector: 'app-sport-detail',
@@ -11,8 +11,8 @@ import { SportService} from '../sport-service/sport.service';
   styleUrls: ['./sport-detail.component.css']
 })
 export class SportDetailComponent implements OnInit {
-//@Input() sport : Sport;
-sport: Sport;
+  @Input() sport: Sport;
+  /*sport: Sport;*/
 
   constructor(
     private route: ActivatedRoute,
@@ -20,9 +20,8 @@ sport: Sport;
     private location: Location
   ) { }
 
-  ngOnInit(): void  {
+  ngOnInit(): void {
     this.getSport();
-    //this.goBack();
   }
   getSport(): void {
     const id = +this.route.snapshot.paramMap.get('id');
@@ -32,5 +31,16 @@ sport: Sport;
   goBack(): void {
     this.location.back();
   }
+  save(): void {
+    this.sportService.updateSport(this.sport)
+      .subscribe(sport => {
+        if (sport.id > 0) {
+          this.goBack();
+        } else {
+          // erreur
+        }
+      });
+  }
+
 
 }

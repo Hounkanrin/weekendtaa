@@ -1,0 +1,9 @@
+<h3>Mes Sports</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let sport of sports" class="col-1-4" routerLink="/detail/{{sport.id}}">
+    <div class="module sport">
+      <h4>{{sport.name}}</h4>
+    </div>
+  </a>
+
+</div>

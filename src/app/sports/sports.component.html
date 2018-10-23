@@ -1,21 +1,21 @@
 <h2>My Sports</h2>
-<ul class = "sports">
-  <li *ngFor="let sport of sports" [class.selected] = "sport === selectedSport" (click)="onSelect(sport)">
-    <span class="badge">{{ sport.id }} : </span> {{ sport.name }}
+<ul class="sports">
+  <li *ngFor="let sport of sports" [class.selected]="sport === selectedSport">
+    <a routerLink="/detail/{{sport.id}}">
+      <span class="badge">{{ sport.id }} : </span> {{ sport.name }}
+    </a>
+    <button class="delete" title="delete sport" (click)="delete(sport)">Supprimer</button>
   </li>
 </ul>
 
-<div *ngIf= "selectedSport">
-<h2>{{selectedSport.name | uppercase}} Details</h2>
-<div><span class ="sport_id">id: </span>{{selectedSport.id}}</div>
 <div>
-  <label>name:
-    <input [(ngModel)]="selectedSport.name" placeholder="name">
+  <label>Nom du sport:
+    <input #sportName />
   </label>
-</div>
-</div>
-<!-- <h1>Ajouter un Sport</h1>
-<form action="">
-  <div><label for=""></label>Nom<input type="text"></div>
-</form> -->
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(sportName.value); sportName.value=''">
+    Ajouter
+  </button><br />
 
+  <!-- <button class="delete" title="delete sport" (click)="delete(sport)">Supprimer</button> -->
+</div>

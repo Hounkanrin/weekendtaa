@@ -1,3 +1,9 @@
-<p>
-  choice works!
-</p>
+<h2>Mes Choices</h2>
+<ul class="Choices">
+  <li *ngFor="let choice of Choices">
+    <!-- <a routerLink="/detail/{{choice.id}}"> -->
+    <span class="badge">{{ choice.id }} : </span> {{ choice.name }}
+
+    <!-- <button class="delete" title="delete sport" (click)="delete(sport)">Supprimer</button> -->
+  </li>
+</ul>

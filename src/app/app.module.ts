@@ -26,16 +26,16 @@ import { ChoiceService } from './choice-service/choice.service';
     SportDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    //ChoiceComponent
+    ChoiceComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false})
+
   ],
-  providers: [SportService,
+  providers: [SportService, ChoiceService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpRequestIntercept,

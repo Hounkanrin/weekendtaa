@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Choice } from '../choice';
-import { ChoiceService } from '../choice-service/choice.service';
+
+
+import {Choice} from '../model/choice';
+import {ChoiceService} from '../service/choice-service/choice.service';
+
 
 @Component({
   selector: 'app-choice',
@@ -19,7 +22,7 @@ export class ChoiceComponent implements OnInit {
     this.choiceService.getChoices()
       .subscribe(choices => {
         this.choices = choices;
-      })
+      });
   }
 
 }

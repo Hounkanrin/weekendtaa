@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Sport } from '../sport';
-import {SportService} from '../sport-service/sport.service';
+import { Sport } from '../model/sport';
+import {SportService} from '../service/sport-service/sport.service';
 
 @Component({
   selector: 'app-dashboard',

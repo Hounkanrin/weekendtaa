@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Sport } from '../sport';
+import { Sport } from '../model/sport';
 import { from } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { SportService } from '../sport-service/sport.service';
+import { SportService } from '../service/sport-service/sport.service';
 
 @Component({
   selector: 'app-sport-detail',

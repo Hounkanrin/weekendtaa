@@ -1,5 +1,5 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Sport } from './sport';
+import { Sport } from './model/sport';
 
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {

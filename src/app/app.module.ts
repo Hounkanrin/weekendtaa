@@ -17,6 +17,7 @@ import { SportService } from './service/sport-service/sport.service';
 import { HttpRequestIntercept } from './httpRequestInterceptor';
 import { ChoiceComponent } from './choice/choice.component';
 import { ChoiceService } from './service/choice-service/choice.service';
+import { DetailChoiceComponent } from './detail-choice/detail-choice.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ChoiceService } from './service/choice-service/choice.service';
     SportDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    ChoiceComponent
+    ChoiceComponent,
+    DetailChoiceComponent
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,7 @@ import { Choice } from '../../model/choice';
 })
 export class ChoiceService {
 
-  choicesUrl = 'choices/';
+  choicesUrl = 'choices';
 
   constructor(
     private http: HttpClient,
@@ -16,7 +16,11 @@ export class ChoiceService {
 
   /** Get sports list on the server */
   getChoices(): Observable<Choice[]> {
-    console.log(this.choicesUrl);
-    return this.http.get<Choice[]>(this.choicesUrl);
+    const url = this.choicesUrl + '/';
+    return this.http.get<Choice[]>(url);
+  }
+  getChoice(id: number): Observable<Choice> {
+    const url = this.choicesUrl + '/' + id.toString();
+    return this.http.get<Choice>(url);
   }
 }

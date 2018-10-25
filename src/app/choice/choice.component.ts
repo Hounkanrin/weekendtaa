@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 
-import {Choice} from '../model/choice';
-import {ChoiceService} from '../service/choice-service/choice.service';
+import { Choice } from '../model/choice';
+import { ChoiceService } from '../service/choice-service/choice.service';
 
 
 @Component({
@@ -21,6 +21,7 @@ export class ChoiceComponent implements OnInit {
   getChoices(): void {
     this.choiceService.getChoices()
       .subscribe(choices => {
+        console.log(choices);
         this.choices = choices;
       });
   }

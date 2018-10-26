@@ -5,7 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Person } from '../../model/person';
-import { MessageService } from '../../message-service/message.service';
+import {MessageService} from '../message-service/message.service';
+
 
 @Injectable({
   providedIn: 'root'

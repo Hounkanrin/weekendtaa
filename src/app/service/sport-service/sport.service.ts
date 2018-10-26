@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Sport } from '../sport';
+import { Sport } from '../../model/sport';
 import { Observable, of } from 'rxjs';
 import { MessageService } from '../message-service/message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';

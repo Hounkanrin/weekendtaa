@@ -13,13 +13,17 @@ import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { from } from 'rxjs';
-import { SportService } from './sport-service/sport.service';
+import { SportService } from './service/sport-service/sport.service';
 import { HttpRequestIntercept } from './httpRequestInterceptor';
 import { ChoiceComponent } from './choice/choice.component';
+<<<<<<< HEAD
 import { ChoiceService } from './choice-service/choice.service';
 import { PersonsComponent } from './persons/persons.component';
 import { AddPersonComponent } from './add-person/add-person.component';
 import { PersonDetailComponent } from './person-detail/person-detail.component';
+=======
+import { ChoiceService } from './service/choice-service/choice.service';
+>>>>>>> 2f2b5d3a6b366c6557acc77097fa2761a44545ac
 
 
 @NgModule({

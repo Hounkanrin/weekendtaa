@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Choice} from '../choice';
+import {Choice} from '../model/choice';
 
 @Component({
   selector: 'app-choice',

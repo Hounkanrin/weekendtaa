@@ -1,0 +1,14 @@
+.persons{
+    text-align: center;
+    color: black;
+}
+
+.persons{
+  background-color: rebeccapurple;
+  margin: 0 auto;
+  width: 30%;
+  height: 50%;
+  background-color: #ccc;
+  border-radius: 3px;
+}
+

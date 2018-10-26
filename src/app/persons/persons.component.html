@@ -1,0 +1,15 @@
+<nav>
+  <a routerLink="/add-person">Ajouter une personne</a><br />
+</nav>
+<router-outlet></router-outlet>
+
+<h4> Liste des personnes </h4>
+<div class="persons">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let person of persons">
+          <a routerLink="/person-detail/{{person.id}}">
+            <span class="person_id">{{person.firstname}} {{person.lastname}} </span>
+          </a>
+        </li>
+    </ul>
+</div>

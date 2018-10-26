@@ -17,6 +17,9 @@ import { SportService } from './sport-service/sport.service';
 import { HttpRequestIntercept } from './httpRequestInterceptor';
 import { ChoiceComponent } from './choice/choice.component';
 import { ChoiceService } from './choice-service/choice.service';
+import { PersonsComponent } from './persons/persons.component';
+import { AddPersonComponent } from './add-person/add-person.component';
+import { PersonDetailComponent } from './person-detail/person-detail.component';
 
 
 @NgModule({
@@ -26,6 +29,9 @@ import { ChoiceService } from './choice-service/choice.service';
     SportDetailComponent,
     MessagesComponent,
     DashboardComponent,
+    PersonsComponent,
+    AddPersonComponent,
+    PersonDetailComponent,
     //ChoiceComponent
   ],
   imports: [

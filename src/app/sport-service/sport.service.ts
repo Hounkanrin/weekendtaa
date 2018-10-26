@@ -10,7 +10,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 export class SportService {
 
-  sportsUrl = 'sports';
+  sportsUrl = 'sports/';
 
   constructor(
     private http: HttpClient,
@@ -21,6 +21,7 @@ export class SportService {
 
   /** Get sports list on the server */
   getSports(): Observable<Sport[]> {
+    console.log("urlSport", this.sportsUrl)
     return this.http.get<Sport[]>(this.sportsUrl);
   }
   /** Get sport by id on the server */

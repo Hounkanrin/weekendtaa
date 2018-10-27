@@ -1,0 +1,41 @@
+<div *ngIf="choice">
+  <h2>Choix {{choice.id }} Details</h2>
+  <div><span>id: </span> {{choice.id}} </div>
+  <div>
+    <label>choiseDate
+      <input [(ngModel)]="choice.choiceDate" placeholder="choiceDate" />
+    </label><br />
+    <label>updatechoice
+      <input [(ngModel)]="choice.lastUpdate" placeholder="lastUpdate" />
+    </label><br />
+    <div *ngIf="choice.level">
+      <h3> levelId {{choice.level.id }} </h3>
+      <label>level:
+        <input [(ngModel)]="choice.level.name" placeholder="levelName" />
+      </label><br />
+    </div>
+    <div *ngIf="choice.person">
+      <h3> PersonId {{choice.person.id }} </h3>
+      <label>Person:
+        <input [(ngModel)]="choice.person.firstname" placeholder="personName" />
+        <input [(ngModel)]="choice.person.lastname" placeholder="personName" />
+        <input [(ngModel)]="choice.person.email" placeholder="personName" />
+      </label><br />
+    </div>
+    <div *ngIf="choice.places">
+      <h3> Places</h3>
+      <label>places:
+       <!-- <span *ngFor="let place of choice.places"  placeholder="placeName">{{place.name}}</span>-->
+     <input [(ngModel)]="choice.places.name" placeholder="placeName" />
+      </label><br />
+      <!-- </div> -->
+    </div>
+    <div *ngIf="choice.sport">
+      <h3> SportId {{choice.sport.id }} </h3>
+      <label>sport:
+        <input [(ngModel)]="choice.sport.name" placeholder="sportname" />
+      </label><br />
+    </div>
+    <button (click)="goBack()">Précedant</button>
+    <button (click)="save()">Enregistrer</button><br />
+  </div>

@@ -1,3 +1,12 @@
-<p>
-  choice works!
-</p>
+<!--<nav>
+  <a routerLink="/add-choice">Ajouter un choix </a><br />
+</nav>-->
+<h2>Mes Choices</h2>
+<ul class="choices">
+  <li *ngFor="let choice of choices">
+    <a routerLink="/details/{{choice.id}}">
+      <span class="badge"> Choice {{ choice.id }} </span>
+    </a>
+  </li>
+
+</ul>

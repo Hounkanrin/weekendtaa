@@ -26,7 +26,7 @@ export class AddPersonComponent implements OnInit {
         if(person.id == null){
           return;
         }
-      })
+      });
 
   }
 }

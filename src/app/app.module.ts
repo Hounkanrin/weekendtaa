@@ -4,8 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
-
-
 import { AppComponent } from './app.component';
 import { SportsComponent } from './sports/sports.component';
 import { SportDetailComponent } from './sport-detail/sport-detail.component';
@@ -21,6 +19,8 @@ import { AddPersonComponent } from './add-person/add-person.component';
 import { PersonDetailComponent } from './person-detail/person-detail.component';
 import { ChoiceService } from './service/choice-service/choice.service';
 import { PersonService } from './service/person-services/person.service';
+import { DetailChoiceComponent } from './detail-choice/detail-choice.component';
+import { AddChoiceComponent } from './add-choice/add-choice.component';
 
 
 
@@ -34,16 +34,18 @@ import { PersonService } from './service/person-services/person.service';
     PersonsComponent,
     AddPersonComponent,
     PersonDetailComponent,
-    //ChoiceComponent
+    ChoiceComponent,
+    DetailChoiceComponent,
+    AddChoiceComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false})
+
   ],
-  providers: [SportService, PersonService,
+  providers: [SportService, PersonService, ChoiceService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpRequestIntercept,

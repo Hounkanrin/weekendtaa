@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Choice} from '../model/choice';
+
+
+import { Choice } from '../model/choice';
+import { ChoiceService } from '../service/choice-service/choice.service';
+
 
 @Component({
   selector: 'app-choice',
@@ -8,9 +12,18 @@ import {Choice} from '../model/choice';
 })
 export class ChoiceComponent implements OnInit {
   choices: Choice[];
-  constructor() { }
+  constructor(private choiceService: ChoiceService) { }
 
   ngOnInit() {
+    this.getChoices();
+  }
+
+  getChoices(): void {
+    this.choiceService.getChoices()
+      .subscribe(choices => {
+        console.log(choices);
+        this.choices = choices;
+      });
   }
 
 }

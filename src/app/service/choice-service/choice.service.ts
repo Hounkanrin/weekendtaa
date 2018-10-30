@@ -23,4 +23,8 @@ export class ChoiceService {
     const url = this.choicesUrl + '/' + id.toString();
     return this.http.get<Choice>(url);
   }
+  addChoice(choice: Choice): Observable<Choice> {
+    const url = this.choicesUrl + '/create'
+    return this.http.post(url, choice) as Observable<Choice>;
+  }
 }

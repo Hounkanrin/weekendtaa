@@ -3,5 +3,8 @@ export class Person {
     firstname: string;
     lastname: string;
     email: string;
+    password: string;
+    role: number;
+    Image: string;
 
 }

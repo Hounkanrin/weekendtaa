@@ -22,11 +22,11 @@
         <input [(ngModel)]="choice.person.email" placeholder="personName" />
       </label><br />
     </div>
-    <div *ngIf="choice.places">
+    <div *ngFor="let place of choice.places; let i=index">
       <h3> Places</h3>
       <label>places:
-       <!-- <span *ngFor="let place of choice.places"  placeholder="placeName">{{place.name}}</span>-->
-     <input [(ngModel)]="choice.places.name" placeholder="placeName" />
+        <!-- <span *ngFor="let place of choice.places"  placeholder="placeName">{{place.name}}</span>-->
+        <input [(ngModel)]="choice.places[i].name" [placeholder]="place.name" />
       </label><br />
       <!-- </div> -->
     </div>

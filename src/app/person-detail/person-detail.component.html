@@ -4,6 +4,20 @@
 </p> -->
 
 <div *ngIf="person">
+    <div class="person-card">
+      <div class="person-image">
+        <img class="person-img" src="{{person.image}}" />
+      </div>
+      <div class="person-informations">
+        <label>Nom:</label> {{person.lastname}} <br/>
+        <label>Prénom:</label> {{person.firstname}} <br/>
+        <label>Email:</label> {{person.email}} <br/>
+
+      </div>
+    </div>
+
+</div>
+<div *ngIf="person">
     <h2>{{person.lastname | uppercase}} details</h2>
     <div>
       <span>id: </span>{{person.id}}
@@ -11,14 +25,14 @@
     <div>
       <label>
           nom:
-          <input [(ngModel)]="person.firstname" placeholder="prénom"><br/>       
+          <input [(ngModel)]="person.lastname" placeholder="prénom"><br/>       
           prénom:
-          <input [(ngModel)]="person.lastname" placeholder="nom"><br/>         
+          <input [(ngModel)]="person.firstname" placeholder="nom"><br/>         
           email:
           <input [(ngModel)]="person.email" placeholder="email"><br/>        
        </label>
     </div>
-  </div>
+</div>
   
   <!-- back button -->
   <div class="button">  

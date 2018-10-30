@@ -12,7 +12,7 @@ export class PersonDetailComponent implements OnInit {
 
   @Input() person: Person;
   message: string;
-
+  defaultPic: string= "../../assets/images/pic-default..jpeg";
   constructor(
     private route: ActivatedRoute,
     private personService: PersonService,

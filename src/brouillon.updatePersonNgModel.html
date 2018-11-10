@@ -1,0 +1,41 @@
+<div class="update-person" *ngIf="person" >
+    <h5>Mettre à jour votre profil</h5>
+
+    <form class="update" [formGroup]="updatePersonForm" (ngSubmit)="updatePerson()" enctype="multipart/form-data">
+     
+      <div class="form-group" >
+        <label for="lastname">Nom</label>
+        <input [(ngModel)]="person.lastname" [ngModelOptions]="{standalone:true}" type="text" class="form-control" id="lastname" ng-required="required">
+      </div>
+  
+      <div class="form-group">
+          <label for="firstname">Prénom</label>
+          <input [(ngModel)]="person.firstname" [ngModelOptions]="{standalone:true}" type="text" class="form-control" id="firstname" ng-required="required">
+      </div>
+  
+      <div class="form-group">
+          <label for="email">Email</label>
+          <input [(ngModel)]="person.email" [ngModelOptions]="{standalone:true}" type="email" class="form-control" id="email" ng-required="required">
+      </div>
+    
+
+      <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <input [(ngModel)]="person.password" [ngModelOptions]="{standalone:true}" type="password" class="form-control" id="password" ng-required="required">
+      </div>
+    
+      <!-- <img class="displayImg" src="../../assets/images/pic-default.png"/> -->
+      <img class="displayImg" src="{{person.image}}"/>
+      <!-- <img class="displayImg" [src]="person.image?person.image : '../../assets/images/pic-default.png'"> -->
+
+      <input class="" type="file" accept="image"/>
+
+      <button type="submit" >Mettre à jour :)</button> {{''}}
+      <button (click)="goBack()">Précédent</button>
+
+      <!-- <pre>{{ personForm.value | json }}</pre> -->
+
+    </form>
+</div>
+
+<!-- [disabled]="!updatePersonForm.valid" -->

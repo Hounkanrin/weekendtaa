@@ -6,18 +6,28 @@
 <div *ngIf="person">
     <div class="person-card">
       <div class="person-image">
-        <img class="person-img" src="{{person.image}}" />
+        <img class="displayImg" [src]="person.image?person.image : '../../assets/images/pic-default.png'">
       </div>
       <div class="person-informations">
         <label>Nom:</label> {{person.lastname}} <br/>
         <label>Prénom:</label> {{person.firstname}} <br/>
         <label>Email:</label> {{person.email}} <br/>
+      </div>
+      <div class="person-button">
+        <button routerLink="/update-person/{{person.id}}">Mettre à jour</button> {{''}}
+        <button (click)="deletePerson()">Supprimer</button>  {{''}}
+        <button (click)="goBack()">Précédent</button>
+      </div>
+      <div class="">
+          <a routerLink="/choices">Voir les sports choisis</a>
 
+          <!-- <a routerLink="/choices/details/{{choice.id}">Voir les sports choisis</a> -->
       </div>
     </div>
-
 </div>
-<div *ngIf="person">
+
+
+<!-- <div *ngIf="person">
     <h2>{{person.lastname | uppercase}} details</h2>
     <div>
       <span>id: </span>{{person.id}}
@@ -34,9 +44,8 @@
     </div>
 </div>
   
-  <!-- back button -->
   <div class="button">  
     <button (click)="updatePerson()">save</button>  {{''}}
     <button (click)="deletePerson()">delete</button>  {{''}}
     <button (click)="goBack()">Précédent</button>
-  </div>
+  </div> -->

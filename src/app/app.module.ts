@@ -23,6 +23,10 @@ import { DetailChoiceComponent } from './detail-choice/detail-choice.component';
 import { AddChoiceComponent } from './add-choice/add-choice.component';
 import { PlaceComponent } from './place/place.component';
 import { PlaceService } from './place.service';
+import { UpdatePersonComponent } from './update-person/update-person.component';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import { UploadComponent } from './upload/upload.component';
+import { Upload1Component } from './upload1/upload1.component';
 
 
 
@@ -39,7 +43,11 @@ import { PlaceService } from './place.service';
     ChoiceComponent,
     DetailChoiceComponent,
     AddChoiceComponent,
-    PlaceComponent
+    PlaceComponent,
+    UpdatePersonComponent,
+    UploadFileComponent,
+    UploadComponent,
+    Upload1Component
   ],
   imports: [
     BrowserModule,

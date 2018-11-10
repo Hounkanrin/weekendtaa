@@ -1,12 +1,17 @@
 <!--<nav>
   <a routerLink="/add-choice">Ajouter un choix </a><br />
-</nav>-->
-<h2>Mes Choices</h2>
-<ul class="choices">
-  <li *ngFor="let choice of choices">
-    <a routerLink="/details/{{choice.id}}">
-      <span class="badge"> Choice {{ choice.id }} </span>
-    </a>
-  </li>
-
-</ul>
+</nav>--> 
+<div class="choices">  
+    <h5> Liste des choix </h5>
+    <div class="choicesList">
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let choice of choices">
+              <a routerLink="/details/{{choice.id}}">
+                <span class="badge"> Choice {{ choice.id }}</span> {{choice.person.lastname}} {{choice.person.firstname}}  
+              </a>
+            </li>
+        </ul>
+    </div>
+  
+  </div>
+  

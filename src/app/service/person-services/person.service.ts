@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Person } from '../../model/person';
-import {MessageService} from '../message-service/message.service';
+import { MessageService } from '../message-service/message.service';
 
 
 @Injectable({
@@ -23,7 +23,7 @@ export class PersonService {
   private log(message: string) {
     this.messageService.add(`PersonService: ${message}`);
   }
-    
+
   private personsUrl = 'persons/';
 
   /**Methods */
@@ -31,32 +31,33 @@ export class PersonService {
     return this.http.get<Person[]>(this.personsUrl);
   }
 
-  getPerson(id: number): Observable<Person>{
+  getPerson(id: number): Observable<Person> {
     const url = `${this.personsUrl}/${id}`;
     return this.http.get<Person>(url);
   }
 
-  addPerson(person: Person): Observable<Person>{
+  addPerson(person: Person): Observable<Person> {
     const url = `${this.personsUrl}create`;
     console.log("Création en base de données d'une personne", url, person);
     return this.http.post(url, person) as Observable<Person>;
   }
 
-  updatePerson (person: Person): Observable<any> {
+  updatePerson(person: Person): Observable<any> {
     const url = `${this.personsUrl}update`;
     console.log("urlUpdate", `${this.personsUrl}update `)
+    console.log("person to update", person)
     return this.http.put<Person>(url, person)
   }
-  
-  deletePerson (person: Person | number): Observable<Boolean>{
+
+  deletePerson(person: Person | number): Observable<Boolean> {
     const id = typeof person === 'number' ? person : person.id;
     const url = `${this.personsUrl}delete/${id}`;
 
     console.log("urlDelete", url);
     return this.http.delete<Boolean>(url);
   }
-  
-  goBack(){
+
+  goBack() {
     this.location.back();
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Person } from '../model/person';
-import {PersonService} from '../service/person-services/person.service';
+import { PersonService } from '../service/person-services/person.service';
 
 @Component({
   selector: 'app-person-detail',
@@ -12,13 +12,14 @@ export class PersonDetailComponent implements OnInit {
 
   @Input() person: Person;
   message: string;
-  defaultPic: string= "../../assets/images/pic-default..jpeg";
+  defaultPic: string = "../../assets/images/pic-default..jpeg";
   constructor(
     private route: ActivatedRoute,
     private personService: PersonService,
   ) { }
 
   ngOnInit() {
+    console.log('ngoninit');
     this.getPerson();
   }
 
@@ -31,7 +32,7 @@ export class PersonDetailComponent implements OnInit {
   updatePerson(): void {
     this.personService.updatePerson(this.person)
       .subscribe(person => {
-        if(person.id > 0){
+        if (person.id > 0) {
           this.goBack();
         }
       })
@@ -41,10 +42,10 @@ export class PersonDetailComponent implements OnInit {
   deletePerson(): void {
     this.personService.deletePerson(this.person.id)
       .subscribe(() => this.message = "Personne supprimée")
-      this.goBack();
+    this.goBack();
   }
 
-  goBack(){
+  goBack() {
     console.log();
     this.personService.goBack();
   }

@@ -1,11 +1,11 @@
-<div class="personsComp">    
+<div class="personsComp">
   <div class="linkadd">
     <nav>
-        <a routerLink="/add-person">Ajouter une personne</a><br />
+      <a routerLink="/add-person">Ajouter une personne</a><br />
     </nav>
     <router-outlet></router-outlet>
   </div>
-  
+
   <!-- <div class="personpic">
       <h5> Liste des personnes </h5>
       <div class="persons">
@@ -18,29 +18,16 @@
   </div> -->
   <h5> Liste des personnes </h5>
   <div class="persons">
-      <ul class="list-group">
-        <li class="list-group-item" *ngFor="let person of persons">
-            <a routerLink="/person-detail/{{person.id}}">
-              <span class="person_id">{{person.firstname}} {{person.lastname}} </span>
-              <!-- <img  src="{{person.image}}" />
-              <img  src='../../assets/images/pic-default.png' /> -->
-
-              <!-- <img ngSrc="{{person.image}}" || ngSrc="../../assets/images/pic-default" /> -->
-
-              <!-- <img ngSrc="personne.image ? personne.image : "../../assets/images/pic-default" /> -->
-
-              <img ngSrc="personne.image ? personne.image : '../../asstes/images/pic-default' "/>
-
-
-
-            </a>
-          </li>
-      </ul>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let person of persons">
+        <a routerLink="/person-detail/{{person.id}}">
+          <span class="person_id">{{person.firstname}} {{person.lastname}} </span>
+          <div>
+            <img class="displayImg" [src]="person.image?person.image : '../../assets/images/pic-default.png'">
+          </div>
+        </a>
+      </li>
+    </ul>
   </div>
 
 </div>
-
-
-
-   <!-- <img  src="{{person.image}}" /> -->
-              <!-- <img  src={{person.image}} ngIf="person.image" /> -->

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Sport } from '../model/sport';
-import {SportService} from '../service/sport-service/sport.service';
+import { SportService } from '../service/sport-service/sport.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +10,7 @@ import {SportService} from '../service/sport-service/sport.service';
 export class DashboardComponent implements OnInit {
   sports: Sport[] = [];
 
-  constructor(private sportService: SportService ) { }
+  constructor(private sportService: SportService) { }
 
   ngOnInit() {
     this.getSports();

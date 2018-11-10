@@ -5,6 +5,7 @@ export class Person {
     email: string;
     password: string;
     role: number;
-    Image: string;
+    image: string | any;
+    // image: "iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAYAAAB5fY51AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA";
 
 }

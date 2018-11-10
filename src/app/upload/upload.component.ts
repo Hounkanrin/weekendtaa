@@ -57,4 +57,4 @@ export class UploadComponent implements OnInit {
     this.fileInput.nativeElement.value = '';
   }
 }
-}
+

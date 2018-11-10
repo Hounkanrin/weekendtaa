@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Sport } from '../../model/sport';
 import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { MessageService } from '../message-service/message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Place } from 'src/app/model/place';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 export class SportService {
 
-  sportsUrl = 'sports/';
+  sportsUrl = 'sports';
 
   constructor(
     private http: HttpClient,
@@ -29,6 +31,15 @@ export class SportService {
     const url = this.sportsUrl + '/' + id.toString();
     return this.http.get<Sport>(url);
   }
+
+  /** Get sport by id on the server */
+  getSportPlacesList(id: number): Observable<Place[]> {
+    const url = this.sportsUrl + '/' + id.toString();
+    return this.http.get<Sport>(url).pipe(map(sport => {
+      return sport.places
+    }));
+  }
+
   /** PUT: update the sport on the server */
   updateSport(sport: Sport): Observable<Sport> {
     const url = this.sportsUrl + '/update';
@@ -46,16 +57,6 @@ export class SportService {
     const url = this.sportsUrl + '/delete/' + id;
     return this.http.delete<Sport>(url);
   }
-
-  // getSport(id: number): Observable<Sport> {
-  //   this.messageService.add(`SportService: fetched sport id=${id}`);
-  //   return of (SPORTS.find(sport => sport.id === id));
-  // }
-  // getSports(): Observable<Sport[]> {
-  //   // TODO: send the message _after_ fetching the sports
-  //   this.messageService.add(`SportService: fetched sports`);
-  //   return of(SPORTS);
-  // }
 
 
 }

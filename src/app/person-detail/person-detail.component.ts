@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Person } from '../model/person';
 import { PersonService } from '../service/person-services/person.service';
+import { ChoiceService } from '../service/choice-service/choice.service';
+import { Choice } from '../model/choice';
 
 @Component({
   selector: 'app-person-detail',
@@ -12,10 +14,14 @@ export class PersonDetailComponent implements OnInit {
 
   @Input() person: Person;
   message: string;
+
   defaultPic: string = "../../assets/images/pic-default..jpeg";
+
+  choice: Choice;
   constructor(
     private route: ActivatedRoute,
     private personService: PersonService,
+    private choiceService: ChoiceService,
   ) { }
 
   ngOnInit() {
@@ -26,7 +32,17 @@ export class PersonDetailComponent implements OnInit {
   getPerson(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.personService.getPerson(id)
-      .subscribe(person => this.person = person)
+      .subscribe(person => {
+        this.person = person
+        // if (person.id == null) {
+        //   return;
+        // } else {
+        //   this.choiceService.getChoiceByPerson(person.id)
+        //     .subscribe(choice => {
+        //       this.choice = choice;
+        //     })
+        // }
+      })
   }
 
   updatePerson(): void {

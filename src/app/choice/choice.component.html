@@ -1,17 +1,47 @@
-<!--<nav>
+<nav>
   <a routerLink="/add-choice">Ajouter un choix </a><br />
-</nav>--> 
-<div class="choices">  
-    <h5> Liste des choix </h5>
-    <div class="choicesList">
-        <ul class="list-group">
-          <li class="list-group-item" *ngFor="let choice of choices">
-              <a routerLink="/details/{{choice.id}}">
-                <span class="badge"> Choice {{ choice.id }}</span> {{choice.person.lastname}} {{choice.person.firstname}}  
-              </a>
-            </li>
-        </ul>
-    </div>
-  
+
+</nav>
+<!-- <div class="choices">
+  <h5> Liste des choix </h5>
+  <div class="choicesList">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let choice of choices">
+        <a routerLink="/details/{{choice.id}}">
+          <span class="badge"> Choice {{ choice.id }}</span> {{choice.person.lastname}} {{choice.person.firstname}}
+        </a>
+      </li>
+    </ul>
   </div>
-  
+
+</div>
+
+<br /> -->
+<table class="table table-hover" style="width:100%;">
+  <tr>
+    <th>#Choix</th>
+    <th>Nom&Prénom</th>
+    <th>Activité</th>
+    <th>Niveau</th>
+    <th>Lieu</th>
+    <th>Editer</th>
+    <th>Supprimer</th>
+  </tr>
+  <tr class="choices" *ngFor="let choice of choices">
+    <td>{{ choice.id }}</td>
+    <td *ngIf="choice.person">{{ choice.person.firstname }}
+      {{choice.person.lastname}}
+
+    </td>
+    <td *ngIf="choice.sport">{{ choice.sport.name }}</td>
+    <td *ngIf="choice.level">{{ choice.level.name }}</td>
+    <td *ngFor="let place of choice.places; let i=index">{{ choice.places[i].name}} </td>
+
+    <td>
+      <button class="btn btn-info" routerLink="/details/{{choice.id}}" routerLinkActive="active">Editer</button>
+    </td>
+    <td>
+      <button class="btn btn-danger" title="delete-choice" (click)="deleteChoice(choice)">Supprimer</button>
+    </td>
+  </tr>
+</table>

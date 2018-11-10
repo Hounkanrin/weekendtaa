@@ -1,26 +1,25 @@
-
-<!--<div class="add-person">
-  <h4>faites votre choix</h4>
-  <form>
-    <div class="form-group">
-      <input type="hidden" value="{{person.id}}" id="personId" required />
+<form [formGroup]="choiceForm" (ngSubmit)="addChoice()">
+    <div class="form-group" formGroupName="sport">
+        <label>Type de Sport</label>
+        <select formControlName="id">
+            <option *ngFor="let sport of sportList" [value]="sport.id">{{sport.name}}</option>
+        </select>
+    </div>
+    <div formGroupName="level">
+        <label>votre niveau</label>
+        <select formControlName="id">
+            <option [value]="1">débutant</option>
+            <option [value]="2">intermédiaire</option>
+            <option [value]="3">confirmé</option>
+        </select>
     </div>
     <div class="form-group">
-      <label >Type de Sport</label>
-      <select [(ngModel)]="id1">
-        <option *ngFor="let sport of sports " [value]="sport.name">{{sport.name}}</option>
-      </select>
+        <label>Lieu</label>
+        <select formControlName="places" multiple>
+            <option *ngFor="let place of currentSportplacesList" [value]="place.id">{{place.name}}</option>
+        </select>
     </div>
-    <!-- <input type="text" class="form-control" id="sport-id" required> -->
+    <button type="submit" class="btn btn-succes" [disabled]="choiceForm.invalid">Ajouter :)</button>
 
-
-<!--<div class="form-group">
-  <label for="email">email</label>
-  <input type="text" class="form-control" id="email" required>
-</div>
-
-<button type="submit" class="btn btn-succes">Ajouter :)</button>
-
+    <pre>{{ choiceForm.value | json }}</pre>
 </form>
-</div>-->
-

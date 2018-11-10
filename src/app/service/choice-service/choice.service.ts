@@ -14,7 +14,7 @@ export class ChoiceService {
     private http: HttpClient,
   ) { }
 
-  /** Get sports list on the server */
+  /** Get choice list on the server */
   getChoices(): Observable<Choice[]> {
     const url = this.choicesUrl + '/';
     return this.http.get<Choice[]>(url);
@@ -27,4 +27,19 @@ export class ChoiceService {
     const url = this.choicesUrl + '/create'
     return this.http.post(url, choice) as Observable<Choice>;
   }
+  deleteChoice(choice: Choice | number): Observable<Choice> {
+    const id = typeof choice === 'number' ? choice : choice.id;
+    const url = this.choicesUrl + '/delete/' + id;
+    return this.http.delete<Choice>(url);
+  }
+  getChoiceByPerson(id: number): Observable<Choice> {
+    const url = `${this.choicesUrl}/${id}`;
+    return this.http.get<Choice>(url);
+  }
+
+  updateChoice(choice: Choice): Observable<Choice> {
+    const url = this.choicesUrl + '/update';
+    return this.http.put<Choice>(url, choice);
+  }
+
 }

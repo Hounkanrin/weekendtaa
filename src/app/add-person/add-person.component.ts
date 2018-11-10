@@ -5,7 +5,7 @@ import { Sport } from '../model/sport';
 import { SportService } from '../service/sport-service/sport.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Place } from '../model/place';
-import { PlaceService } from '../place.service';
+import { PlaceService } from '../service/place-service/place.service';
 import { ChoiceService } from '../service/choice-service/choice.service';
 import { Choice } from '../model/choice';
 
@@ -20,8 +20,12 @@ export class AddPersonComponent implements OnInit {
   newPerson: Person = new Person();
   sportList: Sport[];
   placesList: Place[];
+  currentSportplacesList: Place[];
   personForm: FormGroup;
 
+  get f() {
+    return this.personForm.controls;
+  }
   constructor(
     private personService: PersonService,
     private sportService: SportService,
@@ -33,10 +37,15 @@ export class AddPersonComponent implements OnInit {
   async ngOnInit() {
     this.initForm();
     this.sportList = await this.sportService.getSports().toPromise();
-    this.placesList = await this.placeService.getPlaces().toPromise();
+    //this.placesList = await this.placeService.getPlaces().toPromise();
+    this.f.sport.valueChanges.subscribe(val => {
+      this.sportService.getSportPlacesList(val.id as number).subscribe(
+        placeList => {
+          this.currentSportplacesList = placeList;
+        }
+      );
+    })
 
-
-    console.log(this.placesList);
   }
 
   initForm() {

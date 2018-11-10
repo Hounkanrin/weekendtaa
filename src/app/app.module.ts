@@ -22,7 +22,8 @@ import { PersonService } from './service/person-services/person.service';
 import { DetailChoiceComponent } from './detail-choice/detail-choice.component';
 import { AddChoiceComponent } from './add-choice/add-choice.component';
 import { PlaceComponent } from './place/place.component';
-import { PlaceService } from './place.service';
+import { PlaceService } from './service/place-service/place.service';
+import { ChoicePersonComponent } from './choice-person/choice-person.component';
 
 
 
@@ -39,7 +40,9 @@ import { PlaceService } from './place.service';
     ChoiceComponent,
     DetailChoiceComponent,
     AddChoiceComponent,
-    PlaceComponent
+    PlaceComponent,
+    AddChoiceComponent,
+    ChoicePersonComponent
   ],
   imports: [
     BrowserModule,

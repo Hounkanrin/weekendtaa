@@ -28,8 +28,7 @@ export class PlaceService {
 
   addPlace(place: Place): Observable<Place> {
     const url = `${this.placeUrl}create`;
-    console.log("Place", url);
-    return this.http.post(url, place) as Observable<Place>
+    return this.http.post<Place>(url, place)
   }
 
   updatePlace(place: Place) {

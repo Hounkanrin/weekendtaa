@@ -32,23 +32,21 @@ export class AddPlaceComponent implements OnInit {
   }
 
   addPlace() {
-    console.log("placeFOrm", this.placeForm.value);
-
     this.placeService.addPlace(this.placeForm.value.place)
       .subscribe(place => {
         console.log("newPlaceId", place.name);
-        if (place.name === null) {
-          return
-        } else {
-          let place = new Place();
-          place = this.placeForm.value;
+        // if (place.name === null) {
+        //   return
+        // } else {
+        //   let place = new Place();
+        //   place = this.placeForm.value;
 
-          this.placeService.addPlace(place)
-            .subscribe(data => {
-              console.log("new place", data);
-              this.initForm();
-            })
-        }
+        //   this.placeService.addPlace(place)
+        //     .subscribe(data => {
+        //       console.log("new place", data);
+        //       this.initForm();
+        //     })
+        // }
       })
   }
 }

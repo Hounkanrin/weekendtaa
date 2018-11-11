@@ -13,7 +13,7 @@ import { Choice } from '../model/choice';
 })
 export class ChoicePersonComponent implements OnInit {
 
-  person: Person;
+  personId: number;
   sport: Sport;
   // currentSportplacesList: Place[];
   places: Place[];
@@ -29,24 +29,16 @@ export class ChoicePersonComponent implements OnInit {
 
 
   getChoiceByPerson(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    console.log(id)
-    this.choiceService.getChoiceByPerson(1)
-      .subscribe(choice =>
-
-        this.choices = choice)
+    this.personId = +this.route.snapshot.paramMap.get('id');
+    this.choiceService.getChoiceByPerson(this.personId)
+      .subscribe(choice => {
+        console.log(choice)
+        this.choices = choice
+      })
   }
-  // getChoicePerson(): void {
-  //   const id = +this.route.snapshot.paramMap.get('id');
-  //   this.personService.getPerson(id)
-  //     .subscribe(person => {
-  //       // this.person = person
-  //       this.choiceService.getChoiceByPerson(person.id)
-  //         .subscribe(choice => {
-  //           this.choice = choice;
-  //         })
-  //     })
-  // }
 
+  deleteChoice(choice: Choice) {
+    this.choiceService.deleteChoice(choice).subscribe();
+  }
 
 }

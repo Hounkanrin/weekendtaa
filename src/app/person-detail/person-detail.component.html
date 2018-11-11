@@ -21,6 +21,6 @@
   <button (click)="goBack()">Précédent</button>
 </div>
 
-<nav>
-  <a routerLink="/choice-person" (click)="getChoiceByPerson(person.id)"> Mes Préférences </a><br />
+<nav *ngIf="person">
+  <a routerLink="/choice-person/{{person.id}}" (click)="getChoiceByPerson(person.id)"> Mes Préférences </a><br />
 </nav>

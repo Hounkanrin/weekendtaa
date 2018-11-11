@@ -28,8 +28,8 @@ const routes: Routes = [
   { path: 'choices', component: ChoiceComponent },
   { path: 'details/:id', component: DetailChoiceComponent },
   { path: 'places', component: PlaceComponent },
-  { path: 'add-choice', component: AddChoiceComponent },
-  { path: 'choice-person', component: ChoicePersonComponent }
+  { path: 'add-choice/:id', component: AddChoiceComponent },
+  { path: 'choice-person/:id', component: ChoicePersonComponent }
 ];
 
 @NgModule({

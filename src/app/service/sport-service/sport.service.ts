@@ -34,7 +34,7 @@ export class SportService {
 
   /** Get sport by id on the server */
   getSportPlacesList(id: number): Observable<Place[]> {
-    const url = this.sportsUrl + '/' + id.toString();
+    const url = this.sportsUrl + '/' + id
     return this.http.get<Sport>(url).pipe(map(sport => {
       return sport.places
     }));

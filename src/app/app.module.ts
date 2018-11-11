@@ -22,8 +22,6 @@ import { AddChoiceComponent } from './add-choice/add-choice.component';
 import { PlaceComponent } from './place/place.component';
 import { UpdatePersonComponent } from './update-person/update-person.component';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
-import { UploadComponent } from './upload/upload.component';
-import { Upload1Component } from './upload1/upload1.component';
 import { PlaceService } from './service/place-service/place.service';
 import { ChoicePersonComponent } from './choice-person/choice-person.component';
 
@@ -46,8 +44,6 @@ import { ChoicePersonComponent } from './choice-person/choice-person.component';
 
     UpdatePersonComponent,
     UploadFileComponent,
-    UploadComponent,
-    Upload1Component,
     AddChoiceComponent,
     ChoicePersonComponent
 

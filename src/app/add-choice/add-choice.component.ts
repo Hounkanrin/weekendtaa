@@ -8,6 +8,7 @@ import { SportService } from '../service/sport-service/sport.service';
 import { PlaceService } from '../service/place-service/place.service';
 import { ChoiceService } from '../service/choice-service/choice.service';
 import { Choice } from '../model/choice';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-choice',
@@ -17,7 +18,7 @@ import { Choice } from '../model/choice';
 export class AddChoiceComponent implements OnInit {
 
 
-  persons: Person;
+  personId: string;
   sportList: Sport[];
   currentSportplacesList: Place[];
   sportPlace: Sport;
@@ -30,11 +31,15 @@ export class AddChoiceComponent implements OnInit {
     private personService: PersonService,
     private sportService: SportService,
     private choiceService: ChoiceService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private route: ActivatedRoute
   ) { }
 
   async ngOnInit() {
+
+    this.personId = this.route.snapshot.paramMap.get('id');
     this.initForm();
+
     this.sportList = await this.sportService.getSports().toPromise();
     this.f.sport.valueChanges.subscribe(val => {
       this.sportService.getSportPlacesList(val.id as number).subscribe(
@@ -46,9 +51,10 @@ export class AddChoiceComponent implements OnInit {
   }
 
   initForm() {
+
     this.choiceForm = this.fb.group({
       person: this.fb.group({
-        id: ['1', Validators.required]
+        id: [this.personId, Validators.required]
       }),
       sport: this.fb.group({
         id: ['', Validators.required],
@@ -62,6 +68,7 @@ export class AddChoiceComponent implements OnInit {
   }
 
   addChoice() {
+
     console.log(this.choiceForm.value);
     let choice = new Choice();
     const places = this.choiceForm.value.places.map(item => Object.assign({ id: item }));

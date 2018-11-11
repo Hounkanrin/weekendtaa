@@ -8,7 +8,6 @@ import { SportDetailComponent } from './sport-detail/sport-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { from } from 'rxjs';
 import { SportService } from './service/sport-service/sport.service';
 import { HttpRequestIntercept } from './httpRequestInterceptor';
 import { ChoiceComponent } from './choice/choice.component';
@@ -26,6 +25,8 @@ import { UploadComponent } from './upload/upload.component';
 import { Upload1Component } from './upload1/upload1.component';
 import { PlaceService } from './service/place-service/place.service';
 import { ChoicePersonComponent } from './choice-person/choice-person.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 
 
 
@@ -49,7 +50,9 @@ import { ChoicePersonComponent } from './choice-person/choice-person.component';
     UploadComponent,
     Upload1Component,
     AddChoiceComponent,
-    ChoicePersonComponent
+    ChoicePersonComponent,
+    LoginComponent,
+    HomeComponent
 
   ],
   imports: [

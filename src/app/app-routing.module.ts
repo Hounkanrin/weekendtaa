@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { SportsComponent } from './sports/sports.component';
@@ -13,6 +13,7 @@ import { PlaceComponent } from './place/place.component';
 import { UpdatePersonComponent } from './update-person/update-person.component';
 
 import { AddChoiceComponent } from './add-choice/add-choice.component';
+import { ChoicePersonComponent } from './choice-person/choice-person.component';
 
 
 const routes: Routes = [
@@ -27,7 +28,8 @@ const routes: Routes = [
   { path: 'choices', component: ChoiceComponent },
   { path: 'details/:id', component: DetailChoiceComponent },
   { path: 'places', component: PlaceComponent },
-  { path: 'add-choice', component: AddChoiceComponent }
+  { path: 'add-choice', component: AddChoiceComponent },
+  { path: 'choice-person', component: ChoicePersonComponent }
 ];
 
 @NgModule({

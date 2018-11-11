@@ -41,7 +41,10 @@ export class SportsComponent implements OnInit {
   }
 
   delete(sport: Sport): void {
-    this.sports = this.sports.filter(s => s !== sport);
-    this.sportService.deleteSport(sport).subscribe();
+    let confirm = window.confirm("être vous sur de vouloir supprimer ce sport")
+    if (confirm == true) {
+      this.sports = this.sports.filter(s => s !== sport);
+      this.sportService.deleteSport(sport).subscribe();
+    }
   }
 }

@@ -33,7 +33,7 @@ export class ChoiceService {
     return this.http.delete<Choice>(url);
   }
   getChoiceByPerson(id: number): Observable<Choice> {
-    const url = `${this.choicesUrl}/${id}`;
+    const url = `${this.choicesUrl}/person/${id}`;
     return this.http.get<Choice>(url);
   }
 

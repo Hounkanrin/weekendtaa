@@ -30,9 +30,23 @@ export class ChoicePersonComponent implements OnInit {
 
   getChoiceByPerson(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.choiceService.getChoiceByPerson(this.person.id);
-    //.subscribe(choice => this.choices = choice)
+    console.log(id)
+    this.choiceService.getChoiceByPerson(1)
+      .subscribe(choice =>
+
+        this.choices = choice)
   }
+  // getChoicePerson(): void {
+  //   const id = +this.route.snapshot.paramMap.get('id');
+  //   this.personService.getPerson(id)
+  //     .subscribe(person => {
+  //       // this.person = person
+  //       this.choiceService.getChoiceByPerson(person.id)
+  //         .subscribe(choice => {
+  //           this.choice = choice;
+  //         })
+  //     })
+  // }
 
 
 }

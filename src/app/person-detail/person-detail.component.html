@@ -1,8 +1,3 @@
-<!-- refers to person (ex selectedPerson) -->
-<!-- <p>
-  person-detail works!
-</p> -->
-
 <div *ngIf="person">
   <h2>{{person.lastname | uppercase}} details</h2>
   <div>
@@ -19,11 +14,13 @@
     </label>
   </div>
 </div>
-
 <!-- back button -->
 <div class="button">
   <button (click)="updatePerson()">save</button> {{''}}
   <button (click)="deletePerson()">delete</button> {{''}}
   <button (click)="goBack()">Précédent</button>
-
 </div>
+
+<nav>
+  <a routerLink="/choice-person" (click)="getChoiceByPerson(person.id)"> Mes Préférences </a><br />
+</nav>

@@ -22,11 +22,12 @@ import { PersonService } from './service/person-services/person.service';
 import { DetailChoiceComponent } from './detail-choice/detail-choice.component';
 import { AddChoiceComponent } from './add-choice/add-choice.component';
 import { PlaceComponent } from './place/place.component';
-import { PlaceService } from './place.service';
+import { PlaceService } from './service/place-service/place.service';
 import { UpdatePersonComponent } from './update-person/update-person.component';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { UploadComponent } from './upload/upload.component';
 import { Upload1Component } from './upload1/upload1.component';
+import { AddPlaceComponent } from './add-place/add-place.component';
 
 
 
@@ -47,7 +48,8 @@ import { Upload1Component } from './upload1/upload1.component';
     UpdatePersonComponent,
     UploadFileComponent,
     UploadComponent,
-    Upload1Component
+    Upload1Component,
+    AddPlaceComponent
   ],
   imports: [
     BrowserModule,

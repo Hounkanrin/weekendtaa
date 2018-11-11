@@ -18,6 +18,8 @@ export class UploadComponent implements OnInit {
     this.createForm();
   }
 
+  file: File = null
+
   createForm() {
     this.form = this.fb.group({
       name: ['', Validators.required],
@@ -28,25 +30,31 @@ export class UploadComponent implements OnInit {
   onFileChange(event) {
     let reader = new FileReader();
     if (event.target.files && event.target.files.length > 0) {
-      let file = event.target.files[0];
-      reader.readAsDataURL(file);
+      this.file = event.target.files[0];
+      reader.readAsDataURL(this.file);
       reader.onload = () => {
         this.form.get('avatar').setValue({
-          filename: file.name,
-          filetype: file.type,
+          filename: this.file.name,
+          filetype: this.file.type,
           value: reader.result.split(',')[1]
         })
       };
     }
+    console.log(event);
+    console.log('vavlue AV', this.form.value)
+    this.file = <File>event.target.files[0]
+
   }
 
   onSubmit() {
     const formModel = this.form.value;
+    const fd = new FormData();
+    let fdm = fd.append('avatar', this.file, this.file.name);
     this.loading = true;
     // In a real-world app you'd have a http request / service call here like
     // this.http.post('apiUrl', formModel)
     setTimeout(() => {
-      console.log(formModel);
+      console.log("formModel", formModel);
       alert('done!');
       this.loading = false;
     }, 1000);
@@ -57,4 +65,4 @@ export class UploadComponent implements OnInit {
     this.fileInput.nativeElement.value = '';
   }
 }
-}
+

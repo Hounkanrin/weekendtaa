@@ -5,7 +5,7 @@ import { Sport } from '../model/sport';
 import { SportService } from '../service/sport-service/sport.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Place } from '../model/place';
-import { PlaceService } from '../place.service';
+import { PlaceService } from '../service/place-service/place.service';
 import { ChoiceService } from '../service/choice-service/choice.service';
 import { Choice } from '../model/choice';
 

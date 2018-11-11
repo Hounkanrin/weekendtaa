@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpEventType } from "@angular/common/http";
 
 @Component({
   selector: 'app-upload1',
@@ -7,28 +8,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Upload1Component implements OnInit {
 
-  selectedFile = null
+  selectedFile: File = null
 
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
   }
 
   onFileSelected(event) {
     console.log(event);
-    this.selectedFile = event.target.files[0]
+    this.selectedFile = <File>event.target.files[0]
+    const fd = new FormData()
+    fd.append('image', this.selectedFile, this.selectedFile.name)
+
+    let fdm = fd.append('image', this.selectedFile, this.selectedFile.name)
+    console.log('fdm', fd);
+
   }
 
   onUpload() {
-    const formModel = this.form.value;
-    this.loading = true;
-    // In a real-world app you'd have a http request / service call here like
-    // this.http.post('apiUrl', formModel)
-    setTimeout(() => {
-      console.log(formModel);
-      alert('done!');
-      this.loading = false;
-    }, 1000);
+    const fd = new FormData()
+    fd.append('image', this.selectedFile, this.selectedFile.name)
+
+    this.http.post('https://us-central-fb-cloud-functions-demo.cloud.cloudfunctions.net/uploadFile', fd, {
+      reportProgress: true,
+      observe: 'events'
+    })
+      .subscribe(event => {
+        if (event.type === HttpEventType.UploadProgress) {
+          console.log('Upload Progress' + Math.round(event.loaded / event.total) * 100 + '%');
+        } else if (event.type === HttpEventType.Response) {
+          console.log("res", event);
+
+        }
+      }
+      )
+    console.log("upload1");
   }
 }

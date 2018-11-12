@@ -17,12 +17,12 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login() {
-    this.app.authenticate(this.credentials, () => {
-      this.router.navigateByUrl('/');
-    });
-    return false;
-  }
+  // login() {
+  //   this.app.authenticate(this.credentials, () => {
+  //     this.router.navigateByUrl('/');
+  //   });
+  //   return false;
+  // }
 
 
 }

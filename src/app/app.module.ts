@@ -21,12 +21,11 @@ import { AddChoiceComponent } from './add-choice/add-choice.component';
 import { PlaceComponent } from './place/place.component';
 import { UpdatePersonComponent } from './update-person/update-person.component';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
-import { UploadComponent } from './upload/upload.component';
-import { Upload1Component } from './upload1/upload1.component';
 import { PlaceService } from './service/place-service/place.service';
 import { ChoicePersonComponent } from './choice-person/choice-person.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { AppService } from './app.service';
 
 
 
@@ -47,8 +46,6 @@ import { HomeComponent } from './home/home.component';
 
     UpdatePersonComponent,
     UploadFileComponent,
-    UploadComponent,
-    Upload1Component,
     AddChoiceComponent,
     ChoicePersonComponent,
     LoginComponent,
@@ -63,7 +60,7 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
 
   ],
-  providers: [SportService, PersonService, ChoiceService, PlaceService,
+  providers: [SportService, PersonService, ChoiceService, PlaceService, AppService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpRequestIntercept,

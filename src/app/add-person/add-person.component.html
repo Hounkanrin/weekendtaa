@@ -40,7 +40,7 @@
   <div class="form-group">
     <label>Lieu</label>
     <select formControlName="places" multiple>
-      <option *ngFor="let place of placesList" [value]="place.id">{{place.name}}</option>
+      <option *ngFor="let place of currentSportplacesList" [value]="place.id">{{place.name}}</option>
     </select>
   </div>
 
@@ -48,4 +48,3 @@
 
   <pre>{{ personForm.value | json }}</pre>
 </form>
-

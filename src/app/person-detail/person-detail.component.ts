@@ -37,27 +37,6 @@ export class PersonDetailComponent implements OnInit {
       })
   }
 
-  getChoicePerson(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.personService.getPerson(id)
-      .subscribe(person => {
-        // this.person = person
-        this.choiceService.getChoiceByPerson(person.id)
-          .subscribe(choice => {
-            this.choice = choice;
-          })
-      })
-  }
-
-  // if (person.id == null) {
-  //   return;
-  // } else {
-  //   this.choiceService.getChoiceByPerson(person.id)
-  //     .subscribe(choice => {
-  //       this.choice = choice;
-  //     })
-  // }
-
   updatePerson(): void {
     this.personService.updatePerson(this.person)
       .subscribe(person => {

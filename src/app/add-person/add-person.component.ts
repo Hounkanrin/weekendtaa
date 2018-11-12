@@ -19,7 +19,6 @@ export class AddPersonComponent implements OnInit {
   persons: Person[] = [];
   newPerson: Person = new Person();
   sportList: Sport[];
-  placesList: Place[];
   currentSportplacesList: Place[];
   personForm: FormGroup;
 
@@ -39,7 +38,7 @@ export class AddPersonComponent implements OnInit {
     this.sportList = await this.sportService.getSports().toPromise();
     //this.placesList = await this.placeService.getPlaces().toPromise();
     this.f.sport.valueChanges.subscribe(val => {
-      this.sportService.getSportPlacesList(val.id as number).subscribe(
+      this.sportService.getSportPlacesList(val as number).subscribe(
         placeList => {
           this.currentSportplacesList = placeList;
         }

@@ -29,7 +29,9 @@ export class ChoiceComponent implements OnInit {
     let confirm = window.confirm("être vous sur de vouloir supprimer ce choix")
     if (confirm == true) {
       this.choices = this.choices.filter(s => s !== choice);
-      this.choiceService.deleteChoice(choice).subscribe();
+      this.choiceService.deleteChoice(choice).subscribe(val => {
+        this.choices = this.choices.filter(s => s !== choice);
+      });
     }
   }
 

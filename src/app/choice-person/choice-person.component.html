@@ -23,9 +23,14 @@
   <td>
     <button class="btn btn-danger" title="delete-choice" (click)="deleteChoice(choice)">Supprimer</button>
   </td>
+  <!-- <a *ngIf="choice.person" routerLink="/add-choice/{{choice.person.id}}" class="btn btn-success">Ajouter un choix</a> -->
   </tr>
 </table>
+
 <nav>
-  <a routerLink="/add-choice" class="btn btn-success">Ajouter un choix </a><br />
+
+  <a *ngIf="personId" routerLink="/add-choice/{{personId}}" class="btn btn-success">Ajouter un choix</a>
+
+  <!-- <a  routerLink="/add-choice/" class="btn btn-success">Ajouter un choix </a><br /> -->
 
 </nav>

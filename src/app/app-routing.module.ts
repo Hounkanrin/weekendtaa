@@ -12,6 +12,7 @@ import { DetailChoiceComponent } from './detail-choice/detail-choice.component';
 import { PlaceComponent } from './place/place.component';
 import { UpdatePersonComponent } from './update-person/update-person.component';
 import { AddPlaceComponent } from './add-place/add-place.component';
+import {PlaceDetailComponent} from './place-detail/place-detail.component';
 
 const routes: Routes = [
   { path: 'sports', component: SportsComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'details/:id', component: DetailChoiceComponent },
   { path: 'places', component: PlaceComponent },
   { path: 'add-place', component: AddPlaceComponent },
+  { path: 'place-detail/:id', component: PlaceDetailComponent}
 ];
 
 @NgModule({

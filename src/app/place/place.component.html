@@ -7,9 +7,12 @@
   <div class="place">
     <ul class="list-group">
       <li class="list-group-item" *ngFor="let place of places">
-        <span class="place_id"> {{ place.name }} </span>
-        <button class="delete" title="delete-sport" (click)="delete(lieu)">Supprimer</button>
-
+        <a routerLink="/place-detail/{{place.id}}">
+          <span class="place_id"> {{ place.name }} </span>
+        </a>
+        <div>
+          <button class="btn btn-succes" title="update-place" (click)="deletePlace(place)">Supprimer</button>
+        </div>
       </li>
 
     </ul>

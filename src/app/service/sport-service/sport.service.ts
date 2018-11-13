@@ -21,7 +21,7 @@ export class SportService {
 
   /** Get sports list on the server */
   getSports(): Observable<Sport[]> {
-    console.log("urlSport", this.sportsUrl)
+    console.log('urlSport', this.sportsUrl)
     return this.http.get<Sport[]>(this.sportsUrl);
   }
   /** Get sport by id on the server */

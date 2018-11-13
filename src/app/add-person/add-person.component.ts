@@ -46,23 +46,21 @@ export class AddPersonComponent implements OnInit {
         lastname: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
         password: '',
-        image: '',
       }),
       sport: '',
       level: '',
       places: []
-    })
+    });
   }
 
   addPerson() {
     this.personService.addPerson(this.personForm.value.person)
       .subscribe(person => {
-        console.log("newPersonId", person.id);
+        console.log('newPersonId', person.id);
         if (person.id == null) {
           return;
-        }
-        else {
-          console.log("Choice");
+        } else {
+          console.log('Choice');
           let choice = new Choice();
           this.personForm.value.person = person;
           this.personForm.value.level = { id: this.personForm.value.level };
@@ -72,13 +70,10 @@ export class AddPersonComponent implements OnInit {
           choice = this.personForm.value;
           this.choiceService.addChoice(choice)
             .subscribe(data => {
-              console.log("new Choice", data);
+              console.log('new Choice', data);
               this.initForm();
-
-            })
+            });
         }
-
-
       });
 
   }

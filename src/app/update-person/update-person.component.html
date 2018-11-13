@@ -25,15 +25,6 @@
       <input formControlName="password" type="password" class="form-control" id="password" ng-required="required">
     </div>
 
-    <div class="form-group">
-      <img class="displayImg" alt="no pic found" [src]="uploadImage?uploadImage.value : '../../assets/images/pic-default.png'">
-
-      <!-- <img class="displayImg" alt="no pic found" [src]="person.image"> -->
-      <input type="file" id="image" (change)="onFileChange($event)" #fileInput>
-
-    </div>
-    <!-- <app-upload-file name="test"></app-upload-file> -->
-
     <button type="submit" [disabled]="updatePersonForm.invalid || loading">Mettre à jour :)</button> {{''}}
     <button (click)="goBack()">Précédent</button>
 

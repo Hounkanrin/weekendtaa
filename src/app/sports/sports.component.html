@@ -1,12 +1,14 @@
 <div class="sportsComp">
-  <h2>Liste des sports</h2>
+  <h4>Liste des sports</h4>
   <div class="sports">
     <ul class="list-group">
       <li class="list-group-item" *ngFor="let sport of sports" [class.selected]="sport === selectedSport">
         <a routerLink="/detail/{{sport.id}}">
-          <span class="sport_id">{{ sport.name }} : </span>
+          <span class="sport_id">{{ sport.name }} </span>
         </a>
-        <button class="delete" title="delete-sport" (click)="delete(sport)">Supprimer</button>
+        <div>
+          <button class="btn btn-succes" title="delete-sport" (click)="delete(sport)">Supprimer</button> {{''}}
+        </div>
       </li>
     </ul>
 
@@ -21,25 +23,3 @@
     </div>
   </div>
 </div>
-
-
-<!-- <h2>My Sports</h2>
-<ul class="sports">
-  <li *ngFor="let sport of sports" [class.selected]="sport === selectedSport">
-    <a routerLink="/detail/{{sport.id}}">
-      <span class="badge">{{ sport.id }} : </span> {{ sport.name }}
-    </a>
-    <button class="delete" title="delete-sport" (click)="delete(sport)">Supprimer</button>
-  </li>
-</ul>
-
-<div>
-  <label>Nom du sport:
-    <input #sportName />
-  </label>
-
-  <button (click)="add(sportName.value); sportName.value=''" class="btn btn-primary">
-    Ajouter
-  </button><br />
-
-</div> -->

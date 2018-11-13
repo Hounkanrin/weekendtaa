@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Sport } from '../model/sport';
 import { SportService } from '../service/sport-service/sport.service';
+import {PersonService} from '../service/person-services/person.service';
 
 @Component({
   selector: 'app-sports',
@@ -10,8 +11,11 @@ import { SportService } from '../service/sport-service/sport.service';
 export class SportsComponent implements OnInit {
   /* sport: Sport;*/
   sports: Sport[];
-
-  constructor(private sportService: SportService) {
+  message: string;
+  constructor(
+    private sportService: SportService,
+    private personService: PersonService,
+  ) {
   }
 
   ngOnInit() {
@@ -37,11 +41,22 @@ export class SportsComponent implements OnInit {
     this.sportService.addSport({ name } as Sport)
       .subscribe(sport => {
         this.sports.push();
+        this.getSports();
       });
+  }
+
+  update(sport: Sport) {
+    console.log('update', sport);
+    return this.sportService.updateSport(sport)
+      .subscribe(() => this.message = 'Sport mis à jour.');
   }
 
   delete(sport: Sport): void {
     this.sports = this.sports.filter(s => s !== sport);
     this.sportService.deleteSport(sport).subscribe();
+  }
+
+  goBack() {
+    this.personService.goBack();
   }
 }

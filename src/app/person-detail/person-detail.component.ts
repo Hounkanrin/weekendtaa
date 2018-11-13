@@ -12,7 +12,6 @@ export class PersonDetailComponent implements OnInit {
 
   @Input() person: Person;
   message: string;
-  defaultPic: string = "../../assets/images/pic-default..jpeg";
   constructor(
     private route: ActivatedRoute,
     private personService: PersonService,
@@ -26,7 +25,7 @@ export class PersonDetailComponent implements OnInit {
   getPerson(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.personService.getPerson(id)
-      .subscribe(person => this.person = person)
+      .subscribe(person => this.person = person);
   }
 
   updatePerson(): void {
@@ -35,13 +34,13 @@ export class PersonDetailComponent implements OnInit {
         if (person.id > 0) {
           this.goBack();
         }
-      })
+      });
   }
 
   // methode a revoir
   deletePerson(): void {
     this.personService.deletePerson(this.person.id)
-      .subscribe(() => this.message = "Personne supprimée")
+      .subscribe(() => this.message = 'Personne supprimée');
     this.goBack();
   }
 

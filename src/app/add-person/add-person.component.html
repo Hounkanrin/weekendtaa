@@ -48,3 +48,66 @@
 
   <pre>{{ personForm.value | json }}</pre>
 </form>
+<!-- =======
+<div class="add-person">
+  <h5>Ajouter une nouvelle personne</h5>
+
+  <form class="add" [formGroup]="personForm" (ngSubmit)="addPerson()" enctype="multipart/form-data">
+    <div formGroupName="person">
+
+      <div class="form-group">
+        <label for="lastname">Nom</label>
+        <input class="form-control" type="text" formControlName="lastname" [ngClass]="{'ng-invalid': true}" />
+      </div>
+
+      <div class="form-group">
+        <label for="firstname">Prénom</label>
+        <input class="form-control" type="text" formControlName="firstname" [ngClass]="{'ng-invalid': true}" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input class="form-control" type="email" formControlName="email" [ngClass]="{'ng-invalid': true}" />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input class="form-control" type="password" formControlName="password" [ngClass]="{'ng-invalid': true}" />
+      </div>
+
+      <div>
+        <!-- <img class="displayImg" formControlName="image" src="../../assets/images/pic-default.png" ngDefaultControl/> -->
+<!-- <img formControlName="image" [src]="image?image : '../../assets/images/pic-default.png'" ngDefaultControl>
+        <input type="file" id="image" (change)="onFileChange($event)" #fileInput>
+        <!-- <img class="displayImg" formControlName="image" [src]="image?image : '../../assets/images/pic-default.png'"/> -->
+<!-- </div>
+    </div>
+
+    <div class="form-group">
+      <label class="typeDeSport">Type de Sport</label>
+      <select formControlName="sport">
+        <option *ngFor="let sport of sportList" [value]="sport.id">{{sport.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="votreNiveau">Votre niveau</label>
+      <select formControlName="level">
+        <option [value]="1">débutant</option>
+        <option [value]="2">intermédiaire</option>
+        <option [value]="3">confirmé</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="lieu">Lieu</label>
+      <select formControlName="places" multiple>
+        <option *ngFor="let place of placesList" [value]="place.id">{{place.name}}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-succes" [disabled]="personForm.invalid">Ajouter :)</button>
+
+    <pre>{{ personForm.value | json }}</pre>
+  </form>
+</div> -->

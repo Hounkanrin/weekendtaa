@@ -50,11 +50,18 @@ export class UpdatePersonComponent implements OnInit {
   updatePerson() {
     const formModel = this.updatePersonForm.value;
     this.loading = true;
-    console.log('titi');
     if (this.updatePersonForm.valid) {
-      console.log('tito');
-      const personToUpdate = this.updatePersonForm.value as Person;
-      console.log(personToUpdate);
+      const personToUpdate = new FormData();
+      personToUpdate.append("id", formModel["id"]);
+      personToUpdate.append("firstname", formModel["firstname"]);
+      personToUpdate.append("lastname", formModel["lastname"]);
+      personToUpdate.append("email", formModel["email"]);
+      personToUpdate.append("password", formModel["password"]);
+      personToUpdate.append("image", formModel["image"].value);
+
+      // const personToUpdate = this.updatePersonForm.value as Person;
+
+      console.log("personToUpdate", personToUpdate);
       this.personService.updatePerson(personToUpdate).subscribe(data => console.log(data));
       this.goBack();
     }
@@ -78,6 +85,7 @@ export class UpdatePersonComponent implements OnInit {
         })
       };
     }
+
   }
 
   goBack() {

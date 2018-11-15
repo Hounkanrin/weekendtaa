@@ -1,0 +1,17 @@
+<div class="add-place">
+  <h5>Ajouter un nouveau lieu</h5>
+  <form class="add" [formGroup]="placeForm" (ngSubmit)="addPlace()" enctype="multipart/form-data">
+    <div formGroupName="place">
+
+      <div class="form-group">
+        <label for="name">Nom</label>
+        <input class="form-control" type="text" formControlName="name" [ngClass]="{'ng-invalid': true}">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-succes" [disabled]="placeForm.invalid">Ajouter :)</button>
+
+    <pre>{{placeForm.value | json}}</pre>
+
+  </form>
+</div>

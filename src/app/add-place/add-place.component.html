@@ -9,9 +9,8 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-succes" [disabled]="placeForm.invalid">Ajouter :)</button>
-
-    <pre>{{placeForm.value | json}}</pre>
+    <button type="submit" class="btn btn-succes" [disabled]="placeForm.invalid">Ajouter :)</button>{{" "}}
+    <button class="btn btn-succes" (click)="goBack()">Précédent</button>
 
   </form>
 </div>

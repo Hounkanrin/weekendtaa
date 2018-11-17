@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Person } from '../model/person';
 import {PersonService} from '../service/person-services/person.service';
 
- 
 @Component({
   selector: 'app-persons',
   templateUrl: './persons.component.html',
@@ -19,7 +18,7 @@ export class PersonsComponent implements OnInit {
     this.getPersons();
   }
 
-  getPersons(){
+  getPersons() {
     return this.personService.getPersons()
       .subscribe(persons => this.persons = persons);
   }

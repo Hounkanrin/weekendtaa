@@ -23,10 +23,9 @@ import { PlaceComponent } from './place/place.component';
 import { ChoicePersonComponent } from './choice-person/choice-person.component';
 import { PlaceService } from './service/place-service/place.service';
 import { UpdatePersonComponent } from './update-person/update-person.component';
-import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { AddPlaceComponent } from './add-place/add-place.component';
-
-
+import { PlaceDetailComponent } from './place-detail/place-detail.component';
+import { AddSportComponent } from './add-sport/add-sport.component';
 
 
 
@@ -44,12 +43,13 @@ import { AddPlaceComponent } from './add-place/add-place.component';
     DetailChoiceComponent,
     AddChoiceComponent,
     PlaceComponent,
-
     UpdatePersonComponent,
-    UploadFileComponent,
     AddChoiceComponent,
     ChoicePersonComponent,
     AddPlaceComponent,
+    AddPlaceComponent,
+    PlaceDetailComponent,
+    AddSportComponent,
 
   ],
   imports: [

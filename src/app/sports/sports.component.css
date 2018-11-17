@@ -9,11 +9,10 @@
   width: 250px;
   height: 150px;
   border-radius: 3px;
-  background-color: blue;
 }
 
 .list-group {
-  background-color: blue;
+  margin-top: 1%;
 }
 
 .sport_id {}

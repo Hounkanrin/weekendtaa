@@ -12,9 +12,6 @@
       <li class="list-group-item" *ngFor="let person of persons">
         <a routerLink="/person-detail/{{person.id}}">
           <span class="person_id">{{person.firstname}} {{person.lastname}} </span>
-          <div>
-            <img class="displayImg" [src]="person.image?person.image : '../../assets/images/pic-default.png'">
-          </div>
         </a>
       </li>
     </ul>

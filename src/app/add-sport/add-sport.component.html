@@ -1,0 +1,25 @@
+<form [formGroup]="addSportForm" (ngSubmit)="addSport()" enctype="multipart/form-data">
+  <div class="form-group">
+    <label>
+      Nom
+      <input class="form-control" type="text" formControlName="name" [ngClass]="{'ng-invalid': true}" />
+    </label><br />
+    <label>
+      <div class="form-group">
+        <label>Lieu</label>
+        <select formControlName="places" multiple>
+          <option *ngFor="let place of placesList" [value]="place.id">{{place.name}}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-succes" [disabled]="addSportForm.invalid">Ajouter :)</button>
+
+      <pre>{{ addSportForm.value | json }}</pre>
+    </label>
+  </div>
+</form>
+
+<!-- <label>Nom du sport:
+  <input #sportName />
+</label><br />
+<button (click)="add(sportName.value); sportName.value=''" class="btn btn-primary">
+  Ajouter -->

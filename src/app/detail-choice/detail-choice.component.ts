@@ -15,7 +15,7 @@ import { Level } from '../model/level';
 })
 export class DetailChoiceComponent implements OnInit {
   @Input() choice: Choice;
-  persons: Person;
+  personId: Person;
   sportList: Sport[];
   currentSportplacesList: Place[];
   sportPlace: Sport;
@@ -35,15 +35,15 @@ export class DetailChoiceComponent implements OnInit {
     this.getChoice();
     this.choicesForm = this.fb.group({
       person: this.fb.group({
-        id: [this.persons.id, Validators.required]
+        id: [this.personId, Validators.required]
       }),
       sport: this.fb.group({
-        id: [this.sport.id, Validators.required],
+        id: [this.sport, Validators.required],
       }),
       level: this.fb.group({
-        id: [this.level.id, Validators.required],
+        id: [this.level, Validators.required],
       }),
-      places: [[this.sportPlace.id], Validators.required]
+      places: [[this.sportPlace], Validators.required]
     })
   }
   getChoice(): void {
@@ -56,14 +56,15 @@ export class DetailChoiceComponent implements OnInit {
   }
 
   updateChoice(): void {
-    console.log(this.choicesForm.value);
+    console.log("choix", this.choicesForm.value);
     let choice = new Choice();
     const places = this.choicesForm.value.places.map(item => Object.assign({ id: item }));
     choice = this.choicesForm.value;
     this.choiceService.updateChoice(choice)
       .subscribe(choice => {
         if (choice.id > 0) {
-          this.goBack();
+          this.choiceService.getChoiceByPerson(choice.person.id)
+
         } else {
           // erreur
         }

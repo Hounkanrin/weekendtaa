@@ -4,8 +4,7 @@ import { PersonService } from '../service/person-services/person.service';
 import { Sport } from '../model/sport';
 import { SportService } from '../service/sport-service/sport.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Place } from '../model/place';
-import { PlaceService } from '../service/place-service/place.service';
+import { Place } from '../model/place';;
 import { ChoiceService } from '../service/choice-service/choice.service';
 import { Choice } from '../model/choice';
 
@@ -29,7 +28,6 @@ export class AddPersonComponent implements OnInit {
   constructor(
     private personService: PersonService,
     private sportService: SportService,
-    private placeService: PlaceService,
     private choiceService: ChoiceService,
     private fb: FormBuilder
   ) { }
@@ -55,23 +53,21 @@ export class AddPersonComponent implements OnInit {
         lastname: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
         password: '',
-        image: '',
       }),
       sport: '',
       level: '',
       places: []
-    })
+    });
   }
 
   addPerson() {
     this.personService.addPerson(this.personForm.value.person)
       .subscribe(person => {
-        console.log("newPersonId", person.id);
+        console.log('newPersonId', person.id);
         if (person.id == null) {
           return;
-        }
-        else {
-          console.log("Choice");
+        } else {
+          console.log('Choice');
           let choice = new Choice();
           this.personForm.value.person = person;
           this.personForm.value.level = { id: this.personForm.value.level };
@@ -81,13 +77,10 @@ export class AddPersonComponent implements OnInit {
           choice = this.personForm.value;
           this.choiceService.addChoice(choice)
             .subscribe(data => {
-              console.log("new Choice", data);
+              console.log('new Choice', data);
               this.initForm();
-
-            })
+            });
         }
-
-
       });
 
   }

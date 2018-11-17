@@ -11,11 +11,14 @@ import { ChoiceComponent } from './choice/choice.component';
 import { DetailChoiceComponent } from './detail-choice/detail-choice.component';
 import { PlaceComponent } from './place/place.component';
 import { UpdatePersonComponent } from './update-person/update-person.component';
-
 import { AddChoiceComponent } from './add-choice/add-choice.component';
 import { ChoicePersonComponent } from './choice-person/choice-person.component';
 import { LoginComponent } from './login/login.component';
-import {HomeComponent} from './home/home.component';
+import { HomeComponent } from './home/home.component';
+import { AddPlaceComponent } from './add-place/add-place.component';
+import { PlaceDetailComponent } from './place-detail/place-detail.component';
+import { AddSportComponent } from './add-sport/add-sport.component';
+
 
 
 const routes: Routes = [
@@ -33,7 +36,10 @@ const routes: Routes = [
   { path: 'details/:id', component: DetailChoiceComponent },
   { path: 'places', component: PlaceComponent },
   { path: 'add-choice/:id', component: AddChoiceComponent },
-  { path: 'choice-person/:id', component: ChoicePersonComponent }
+  { path: 'choice-person/:id', component: ChoicePersonComponent },
+  { path: 'add-place', component: AddPlaceComponent },
+  { path: 'place-detail/:id', component: PlaceDetailComponent },
+  { path: 'add-sport', component: AddSportComponent }
 ];
 
 @NgModule({

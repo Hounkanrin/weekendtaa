@@ -14,8 +14,7 @@ export class PersonDetailComponent implements OnInit {
 
   @Input() person: Person;
   message: string;
-
-  defaultPic: string = "../../assets/images/pic-default..jpeg";
+  //defaultPic: string = "../../assets/images/pic-default..jpeg";
 
   choice: Choice;
   constructor(
@@ -43,13 +42,13 @@ export class PersonDetailComponent implements OnInit {
         if (person.id > 0) {
           this.goBack();
         }
-      })
+      });
   }
 
   // methode a revoir
   deletePerson(): void {
     this.personService.deletePerson(this.person.id)
-      .subscribe(() => this.message = "Personne supprimée")
+      .subscribe(() => this.message = 'Personne supprimée');
     this.goBack();
   }
 

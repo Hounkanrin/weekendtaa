@@ -1,43 +1,31 @@
 <Form *ngIf="choice" (ngSubmit)="updateChoice()" enctype="multipart/form-data">
-  <h2>Choix {{choice.id }} Details</h2>
-  <div><span>id: </span> {{choice.id}} </div>
+  <h2>Mon Choix </h2>
+  <!-- <div><span>id: </span> {{choice.id}} </div> -->
   <div>
-    <label>choiseDate
-      <input class="form-control" [(ngModel)]="choice.choiceDate" placeholder="choiceDate" />
-    </label><br />
-    <label>updatechoice
-      <input class="form-control" [(ngModel)]="choice.lastUpdate" placeholder="lastUpdate" />
-    </label><br />
-    <div *ngIf="choice.level">
-      <!-- <h3> levelId {{choice.level.id }} </h3> -->
-      <label>level:
-        <input class="form-control" [(ngModel)]="choice.level.name" placeholder="levelName" />
-      </label><br />
-    </div>
-    <div *ngIf="choice.person">
-      <!-- <h3> PersonId {{choice.person.id }} </h3> -->
-      <label>Person:
-        <input class="form-control" [(ngModel)]="choice.person.firstname" placeholder="personName" />
-        <input class="form-control" [(ngModel)]="choice.person.lastname" placeholder="personName" />
-        <input class="form-control" [(ngModel)]="choice.person.email" placeholder="personName" />
-      </label><br />
-    </div>
-    <div *ngFor="let place of choice.places; let i=index">
-      <!-- <h3> Places</h3> -->
-      <label>places:
-        <!-- <span *ngFor="let place of choice.places"  placeholder="placeName">{{place.name}}</span>-->
-        <input class="form-control" [(ngModel)]="choice.places[i].name" [placeholder]="place.name" />
-      </label><br />
-      <!-- </div> -->
-    </div>
+    <!-- <div *ngIf="person">
+      <input type="hidden" value="{{ person.id }}">
+    </div> -->
     <div *ngIf="choice.sport">
-      <!-- <h3> SportId {{choice.sport.id }} </h3> -->
       <label>sport:
         <input class="form-control" [(ngModel)]="choice.sport.name" placeholder="sportname" />
       </label><br />
     </div>
+    <div *ngIf="choice.level">
+      <label>level:
+        <input class="form-control" [(ngModel)]="choice.level.name" placeholder="levelName" />
+      </label><br />
+    </div>
+    <div *ngFor="let place of choice.places; let i=index">
+      <label>places:
+        <input class="form-control" [(ngModel)]="choice.places[i].name" [placeholder]="place.name" />
+      </label><br />
+    </div>
+
     <button class="btn btn-secondary" (click)="goBack()"> Précedant </button>&nbsp;
     <button class="btn btn-success" (click)="updateChoice()"> Enregistrer </button><br />
   </div>
-  <!-- <pre>{{ choicesForm.value | json }}</pre> -->
+  <pre>{{ choicesForm.value | json }}</pre>
 </Form>
+<form>
+
+</form>

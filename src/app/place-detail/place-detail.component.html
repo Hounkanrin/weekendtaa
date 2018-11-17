@@ -1,0 +1,12 @@
+<div class="placeDetailComp" *ngIf="place">
+
+  <h5> Mettre à jour {{place.name}}</h5>
+  <!--<div><span>id: </span> {{sport.id}} </div>-->
+  <div class="sport">
+    <label for="name">Nom </label>
+    <input class="form-control" [(ngModel)]="place.name" placeholder="name"/>
+
+    <button (click)="goBack()">Précedant</button> {{' '}}
+    <button (click)="save()">Enregistrer</button><br/>
+  </div>
+</div>

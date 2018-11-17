@@ -1,73 +1,74 @@
-.add-person{
+.add-person {
   text-align: center;
   margin: 0 auto;
-  width:400px;
-  height:800px;
+  width: 400px;
+  height: 400px;
   background-color: bisque
 }
 
-.add{
-  width:400px;
-  height:880px;
-  background:#ffffff;
-  border-radius:8px;
-  box-shadow:0 0 30px -10px #2369AD;
+.add {
+  width: 400px;
+  height: 880px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 30px -10px #2369AD;
   /* gère la distance entre le header de la page et le formulaire */
-  margin:calc(35vh - 290px) auto;
+  margin: calc(35vh - 290px) auto;
   /* center le formulaire */
   margin: 5% auto;
-  padding:30px 30px;
-  max-width:calc(100vw - 40px);
-  box-sizing:border-box;
-  font-family:'Montserrat',sans-serif;
+  padding: 30px 30px;
+  max-width: calc(100vw - 40px);
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
   /* position:relative */
 }
 
-input{
-  width:100%;
+input {
+  width: 100%;
   /* gère l'espacement entre les différents input */
   /* margin: 1px 0 0px; */
   margin-top: -8%;
-  box-sizing:border-box;
-  background:none;
-  outline:none;
-  resize:none;
-  border:0;
-  font-family:'Montserrat',sans-serif;
-  transition:all .3s;
-  border-bottom:1px solid #d2becd
+  box-sizing: border-box;
+  background: none;
+  outline: none;
+  resize: none;
+  border: 0;
+  font-family: 'Montserrat', sans-serif;
+  transition: all .3s;
+  border-bottom: 1px solid #d2becd
 }
 
-input:focus{
-  border-bottom:2px solid #78788c
+input:focus {
+  border-bottom: 2px solid #78788c
 }
 
-button{
+button {
   /* padding:5px 12px;
   margin:12px 0 0; */
-  padding-bottom:1%;
+  padding-bottom: 1%;
   margin-top: -1%;
-  cursor:pointer;
+  cursor: pointer;
 }
 
-.displayImg{
-  width:300px;
-  height:300px;
+.displayImg {
+  width: 300px;
+  height: 300px;
 }
 
-.typeDeSport{
+.typeDeSport {
   margin-top: 3%;
   margin-right: 3%;
 }
 
-.votreNiveau{
-  margin-top: 3%;
+.votreNiveau {
+  margin-top: -1%;
   margin-right: 3%;
 }
 
-.lieu{
+.lieu {
   margin-right: 3%;
 }
+
 /* button{
   padding:5px 12px;
   margin:12px 0 0;

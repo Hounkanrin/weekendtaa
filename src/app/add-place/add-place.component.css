@@ -1,0 +1,24 @@
+.add-place {
+  text-align: center;
+  margin: 0 auto;
+  width: 400px;
+  height: 800px;
+  /* background-color: blue; */
+}
+
+.add {
+  /* width: 30%; */
+  width: 400px;
+  height: 170px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 30px -10px #2369AD;
+  /* gère la distance entre le header de la page et le formulaire */
+  margin: calc(35vh - 290px) auto;
+  /* center le formulaire */
+  margin: 5% auto;
+  padding: 30px 30px;
+  max-width: calc(100vw - 40px);
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}

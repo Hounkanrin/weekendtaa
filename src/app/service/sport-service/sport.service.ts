@@ -12,7 +12,7 @@ import { Place } from 'src/app/model/place';
 
 export class SportService {
 
-  sportsUrl = 'sports';
+  sportsUrl = 'sports/';
 
   constructor(
     private http: HttpClient,
@@ -23,18 +23,23 @@ export class SportService {
 
   /** Get sports list on the server */
   getSports(): Observable<Sport[]> {
-    console.log("urlSport", this.sportsUrl)
+    console.log('urlSport', this.sportsUrl)
     return this.http.get<Sport[]>(this.sportsUrl);
   }
   /** Get sport by id on the server */
   getSport(id: number): Observable<Sport> {
-    const url = this.sportsUrl + '/' + id.toString();
+    const url = this.sportsUrl + id;
+    return this.http.get<Sport>(url);
+  }
+
+  getSportByName(name: String): Observable<Sport> {
+    const url = this.sportsUrl + name;
     return this.http.get<Sport>(url);
   }
 
   /** Get sport by id on the server */
   getSportPlacesList(id: number): Observable<Place[]> {
-    const url = this.sportsUrl + '/' + id
+    const url = this.sportsUrl + id
     return this.http.get<Sport>(url).pipe(map(sport => {
       return sport.places
     }));
@@ -42,19 +47,20 @@ export class SportService {
 
   /** PUT: update the sport on the server */
   updateSport(sport: Sport): Observable<Sport> {
-    const url = this.sportsUrl + '/update';
+    const url = this.sportsUrl + 'update';
     return this.http.put<Sport>(url, sport);
   }
 
   /** POST: add a new sport to the server */
   addSport(sport: Sport): Observable<Sport> {
-    const url = this.sportsUrl + '/create'
+    const url = this.sportsUrl + 'create'
+    console.log("service ", url)
     return this.http.post(url, sport) as Observable<Sport>;
   }
   // /** DELETE: delete the hero from the server */
   deleteSport(sport: Sport | number): Observable<Sport> {
     const id = typeof sport === 'number' ? sport : sport.id;
-    const url = this.sportsUrl + '/delete/' + id;
+    const url = this.sportsUrl + 'delete/' + id;
     return this.http.delete<Sport>(url);
   }
 

@@ -1,13 +1,14 @@
 <h2>Sports</h2>
-<table class="table table-hover table-bordered" style="width:100%;">
+<table class="table table-hover" style="width:100%;">
   <tr>
     <th>Sport</th>
-    <!-- <th>Lieu</th> -->
-    <th>Editer</th>
-    <th>Supprimer</th>
+    <th>Lieu</th>
+    <th></th>
+    <th></th>
   </tr>
   <tr class="sports" *ngFor="let sport of sports">
     <td>{{ sport.name }}</td>
+    <td></td>
     <td>
       <button class="btn btn-info" routerLink="/detail/{{sport.id}}" routerLinkActive="active">Editer</button>
     </td>
@@ -16,11 +17,39 @@
     </td>
   </tr>
 </table>
-<div>
-  <label>Nom du sport:
-    <input #sportName />
-  </label><br />
-  <button (click)="add(sportName.value); sportName.value=''" class="btn btn-primary">
-    Ajouter
-  </button>
-</div>
+<nav>
+  <a routerLink="/add-sport">Ajouter un sport</a>
+</nav>
+
+
+<!-- <label>Nom du sport:
+  <input #sportName />
+</label><br />
+<button (click)="add(sportName.value); sportName.value=''" class="btn btn-primary">
+  Ajouter -->
+<!-- 
+<div class="sportsComp">
+  <h4>Liste des sports</h4>
+  <div class="sports">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let sport of sports" [class.selected]="sport === selectedSport">
+        <a routerLink="/detail/{{sport.id}}">
+          <span class="sport_id">{{ sport.name }} </span>
+        </a>
+        <div>
+          <button class="btn btn-succes" title="delete-sport" (click)="delete(sport)">Supprimer</button> {{''}}
+        </div>
+      </li>
+    </ul>
+
+    <div>
+      <label>Nom du sport:
+        <input #sportName />
+      </label>
+
+      <button (click)="add(sportName.value); sportName.value=''" class="btn btn-primary">
+        Ajouter
+      </button><br />
+    </div>
+  </div>
+</div> -->

@@ -6,25 +6,12 @@
     <router-outlet></router-outlet>
   </div>
 
-  <!-- <div class="personpic">
-      <h5> Liste des personnes </h5>
-      <div class="persons">
-        <div class="card">
-          <div class="card-border">
-            <img class="person-img" src="{{person.image}}"/>
-          </div>
-        </div>
-      </div>
-  </div> -->
   <h5> Liste des personnes </h5>
   <div class="persons">
     <ul class="list-group">
       <li class="list-group-item" *ngFor="let person of persons">
         <a routerLink="/person-detail/{{person.id}}">
           <span class="person_id">{{person.firstname}} {{person.lastname}} </span>
-          <div>
-            <img class="displayImg" [src]="person.image?person.image : '../../assets/images/pic-default.png'">
-          </div>
         </a>
       </li>
     </ul>

@@ -33,7 +33,7 @@ export class UpdatePersonComponent implements OnInit {
       .subscribe(person => {
         this.person = person;
         this.initForm();
-      })
+      });
   }
 
   initForm() {
@@ -44,41 +44,27 @@ export class UpdatePersonComponent implements OnInit {
       email: [this.person.email, [Validators.required, Validators.email]],
       password: this.person.password,
       image: null,
-    })
+    });
   }
 
   updatePerson() {
     const formModel = this.updatePersonForm.value;
     this.loading = true;
-    console.log('titi');
     if (this.updatePersonForm.valid) {
-      console.log('tito');
-      const personToUpdate = this.updatePersonForm.value as Person;
-      console.log(personToUpdate);
+      const personToUpdate = new FormData();
+      personToUpdate.append('id', formModel['id']);
+      personToUpdate.append('firstname', formModel['firstname']);
+      personToUpdate.append('lastname', formModel['lastname']);
+      personToUpdate.append('email', formModel['email']);
+      personToUpdate.append('password', formModel['password']);
+
+      // const personToUpdate = this.updatePersonForm.value as Person;
+      console.log('personToUpdate', personToUpdate);
       this.personService.updatePerson(personToUpdate).subscribe(data => console.log(data));
       this.goBack();
     }
-    setTimeout(() => {
-      console.log(formModel);
-      alert('done!');
-      this.loading = false;
-    }, 1000);
   }
 
-  onFileChange(event) {
-    let reader = new FileReader();
-    if (event.target.files && event.target.files.length > 0) {
-      let file = event.target.files[0];
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        this.updatePersonForm.get('image').setValue({
-          filename: file.name,
-          filetype: file.type,
-          value: reader.result.split(',')[1]
-        })
-      };
-    }
-  }
 
   goBack() {
     this.personService.goBack();

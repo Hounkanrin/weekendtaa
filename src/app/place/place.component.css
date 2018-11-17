@@ -1,0 +1,15 @@
+.placeComp {
+  margin-bottom: 5%;
+}
+
+.place {
+  text-align: center;
+  margin: 0 auto;
+  width: 350px;
+  height: 150px;
+  border-radius: 3px;
+}
+
+.addPlace {
+  margin-top: 2%;
+}

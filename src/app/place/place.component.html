@@ -1,9 +1,22 @@
-<h2>Lieu</h2>
-<ul class="choices">
-  <li *ngFor="let place of places">
-    <!-- <a routerLink="/details/{{choice.id}}"> -->
-    <span class="badge"> {{ place.name }} </span>
-    <!-- </a> -->
-  </li>
+<div class="placeComp">
+  <div class="addPlace">
+    <a routerLink="/add-place">Ajouter un lieu</a>
+  </div>
+  <h4>Liste des lieux</h4>
 
-</ul>
+  <div class="place">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let place of places">
+        <a routerLink="/place-detail/{{place.id}}">
+          <span class="place_id"> {{ place.name }} </span>
+        </a>
+        <div>
+          <button class="btn btn-succes" title="update-place" (click)="deletePlace(place)">Supprimer</button>
+        </div>
+      </li>
+
+    </ul>
+
+
+  </div>
+</div>

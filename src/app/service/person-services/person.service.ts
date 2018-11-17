@@ -42,11 +42,11 @@ export class PersonService {
     return this.http.post(url, person) as Observable<Person>;
   }
 
-  updatePerson(person: Person): Observable<any> {
+  updatePerson(person: Person | FormData): Observable<any> {
     const url = `${this.personsUrl}update`;
-    console.log("urlUpdate", `${this.personsUrl}update `)
-    console.log("person to update", person)
-    return this.http.put<Person>(url, person)
+    console.log("urlUpdate", `${this.personsUrl}update `);
+    console.log("person to update", person);
+    return this.http.put<Person>(url, person);
   }
 
   deletePerson(person: Person | number): Observable<Boolean> {

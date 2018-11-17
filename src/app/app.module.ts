@@ -19,13 +19,15 @@ import { PersonService } from './service/person-services/person.service';
 import { DetailChoiceComponent } from './detail-choice/detail-choice.component';
 import { AddChoiceComponent } from './add-choice/add-choice.component';
 import { PlaceComponent } from './place/place.component';
-import { UpdatePersonComponent } from './update-person/update-person.component';
-import { UploadFileComponent } from './components/upload-file/upload-file.component';
-import { PlaceService } from './service/place-service/place.service';
 import { ChoicePersonComponent } from './choice-person/choice-person.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AppService } from './app.service';
+import { PlaceService } from './service/place-service/place.service';
+import { UpdatePersonComponent } from './update-person/update-person.component';
+import { AddPlaceComponent } from './add-place/add-place.component';
+import { PlaceDetailComponent } from './place-detail/place-detail.component';
+import { AddSportComponent } from './add-sport/add-sport.component';
 
 
 
@@ -43,13 +45,14 @@ import { AppService } from './app.service';
     DetailChoiceComponent,
     AddChoiceComponent,
     PlaceComponent,
-
     UpdatePersonComponent,
-    UploadFileComponent,
     AddChoiceComponent,
     ChoicePersonComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    AddPlaceComponent,
+    PlaceDetailComponent,
+    AddSportComponent,
 
   ],
   imports: [

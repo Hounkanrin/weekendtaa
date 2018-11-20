@@ -14,7 +14,7 @@ export class AppService {
     const headers = new HttpHeaders(credentials ? {
       authorization: 'Basic' + btoa(credentials.username + ':' + credentials.password)
     } : {});
-    this.http.get('person', { headers: headers }).subscribe(response => {
+    this.http.post('login', { headers: headers }).subscribe(response => {
       if (response['name']) {
         this.authenticated = true;
       } else {

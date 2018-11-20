@@ -10,6 +10,7 @@ import { AppService } from '../app.service';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  baseUrl: 'persons/'
 
   constructor(private fb: FormBuilder, private appService: AppService) { }
 
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   initForm() {
     this.loginForm = this.fb.group({
-      username: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required],
     })
 
@@ -28,8 +29,12 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.appService.authenticate(this.loginForm.value);
+    //   this.router.navigateByUrl('/');
+    // });
+    // return false
     if (this.appService.authenticated) {
-      // TODO faire la redirection vers la page d'accueil
+      this.baseUrl
+      //TODO faire la redirection vers la page d'accueil
     }
   }
 

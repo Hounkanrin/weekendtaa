@@ -37,9 +37,10 @@ export class AddPersonComponent implements OnInit {
     this.sportList = await this.sportService.getSports().toPromise();
     //this.placesList = await this.placeService.getPlaces().toPromise();
     this.f.sport.valueChanges.subscribe(val => {
-      this.sportService.getSportPlacesList(val as number).subscribe(
+      this.sportService.getSportPlacesList(val).subscribe(
         placeList => {
           this.currentSportplacesList = placeList;
+          console.log("cruurent ", this.currentSportplacesList)
         }
       );
     })

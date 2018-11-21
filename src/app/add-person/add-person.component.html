@@ -3,7 +3,7 @@
     <label for="exampleFormControlInput1"> Nom
       <input class="form-control" type="text" formControlName="firstname" [ngClass]="{'ng-invalid': true}" />
     </label> <br />
-    <label>
+    <label for="fname">
       Prénom
       <input class="form-control" type="text" formControlName="lastname" />
     </label><br />
@@ -18,14 +18,14 @@
   </div>
 
   <div class="form-group">
-    <label>Type de Sport</label>
+    <label>Type de Sport</label><br />
     <select formControlName="sport">
       <option *ngFor="let sport of sportList" [value]="sport.id">{{sport.name}}</option>
     </select>
   </div>
 
   <div class="form-group">
-    <label>votre niveau</label>
+    <label>votre niveau</label><br />
     <select formControlName="level">
       <option [value]="1">débutant</option>
       <option [value]="2">intermédiaire</option>
@@ -33,71 +33,13 @@
     </select>
   </div>
   <div class="form-group">
-    <label>Lieu</label>
+    <label>Lieu</label><br />
     <select formControlName="places" multiple>
-      <option *ngFor="let place of currentSportplacesList" [value]="place.id">{{place.name}}</option>
+      <option *ngFor="let places of currentSportplacesList" [value]="places.id">{{places.name}}</option>
     </select>
   </div>
 
-  <button type="submit" class="btn btn-succes" [disabled]="personForm.invalid">Ajouter :)</button>
+  <button type="submit" class="btn btn-succes">Enrégistrer</button>
 
   <pre>{{ personForm.value | json }}</pre>
 </form>
-<!-- =======
-<div class="add-person">
-  <h5>Ajouter une nouvelle personne</h5>
-
-  <form class="add" [formGroup]="personForm" (ngSubmit)="addPerson()" enctype="multipart/form-data">
-    <div formGroupName="person">
-
-      <div class="form-group">
-        <label for="lastname">Nom</label>
-        <input class="form-control" type="text" formControlName="lastname" [ngClass]="{'ng-invalid': true}" />
-      </div>
-
-      <div class="form-group">
-        <label for="firstname">Prénom</label>
-        <input class="form-control" type="text" formControlName="firstname" [ngClass]="{'ng-invalid': true}" />
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input class="form-control" type="email" formControlName="email" [ngClass]="{'ng-invalid': true}" />
-      </div>
-
-      <div class="form-group">
-        <label for="password">Mot de passe</label>
-        <input class="form-control" type="password" formControlName="password" [ngClass]="{'ng-invalid': true}" />
-      </div>
-
-
-    </div>
-
-    <div class="form-group">
-      <label class="typeDeSport">Type de Sport</label>
-      <select formControlName="sport">
-        <option *ngFor="let sport of sportList" [value]="sport.id">{{sport.name}}</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label class="votreNiveau">Votre niveau</label>
-      <select formControlName="level">
-        <option [value]="1">débutant</option>
-        <option [value]="2">intermédiaire</option>
-        <option [value]="3">confirmé</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label class="lieu">Lieu</label>
-      <select formControlName="places" multiple>
-        <option *ngFor="let place of placesList" [value]="place.id">{{place.name}}</option>
-      </select>
-    </div>
-
-    <button type="submit" class="btn btn-succes" [disabled]="personForm.invalid">Ajouter :)</button>
-
-    <pre>{{ personForm.value | json }}</pre>
-  </form>
-</div> -->

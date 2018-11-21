@@ -19,7 +19,7 @@
             <option *ngFor="let place of currentSportplacesList" [value]="place.id">{{place.name}}</option>
         </select>
     </div>
-    <button type="submit" class="btn btn-succes" [disabled]="choiceForm.invalid">Ajouter :)</button>
+    <button type="submit" class="btn btn-succes">Ajouter :)</button>
 
     <pre>{{ choiceForm.value | json }}</pre>
 </form>

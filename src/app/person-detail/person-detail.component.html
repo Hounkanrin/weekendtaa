@@ -2,22 +2,23 @@
   <h2>{{person.lastname }} </h2>
   <div>
     <label for="exampleFormControlInput1">
-      nom:
       <input [(ngModel)]=" person.firstname" placeholder="prénom"><br />
-      prénom:
+
       <input [(ngModel)]="person.lastname" placeholder="nom"><br />
-      email:
+
       <input [(ngModel)]="person.email" placeholder="email"><br />
     </label>
   </div>
 </div>
 <!-- back button -->
 <div class="button">
-  <button (click)="updatePerson()">save</button> {{''}}
-  <button (click)="deletePerson()">delete</button> {{''}}
-  <button (click)="goBack()">Précédent</button>
-</div>
+  <button (click)="updatePerson()" class="btn btn-success">save</button> {{''}}
+  <button (click)="deletePerson()" class="btn btn-danger">delete</button> {{''}}
+  <button (click)="goBack()" class="btn btn-info">Précédent</button>
+</div><br />
 
 <nav *ngIf="person">
-  <a routerLink="/choice-person/{{person.id}}" (click)="getChoiceByPerson(person.id)"> Mes Préférences </a><br />
+  <a routerLink="/choice-person/{{person.id}}" (click)="getChoiceByPerson(person.id)">
+    <h4> Mes Préférences </h4>
+  </a><br />
 </nav>

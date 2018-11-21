@@ -8,11 +8,19 @@
     <div *ngIf="choice.sport">
       <label>sport:
         <input class="form-control" [(ngModel)]="choice.sport.name" placeholder="sportname" />
+        <!-- <select formControlName="id" [(ngModel)]="choice.sport.name">
+          <option *ngFor="let sport of sportList" [value]="sport.id">{{sport.name}}</option>
+        </select> -->
       </label><br />
     </div>
     <div *ngIf="choice.level">
       <label>level:
         <input class="form-control" [(ngModel)]="choice.level.name" placeholder="levelName" />
+        <!-- <select formControlName="id" [(ngModel)]="choice.level.name">
+          <option [value]="1">débutant</option>
+          <option [value]="2">intermédiaire</option>
+          <option [value]="3">confirmé</option>
+        </select> -->
       </label><br />
     </div>
     <div *ngFor="let place of choice.places; let i=index">
@@ -21,8 +29,8 @@
       </label><br />
     </div>
 
-    <button class="btn btn-secondary" (click)="goBack()"> Précedant </button>&nbsp;
+    <button class="btn btn-info" (click)="goBack()"> Précedant </button>&nbsp;
     <button class="btn btn-success" (click)="updateChoice()"> Enregistrer </button><br />
   </div>
-  <pre>{{ choicesForm.value | json }}</pre>
+  <!-- <pre>{{ choicesForm.value | json }}</pre> -->
 </Form>

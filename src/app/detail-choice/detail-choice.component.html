@@ -1,28 +1,24 @@
-<Form *ngIf="choice" (ngSubmit)="updateChoice()" enctype="multipart/form-data">
+<!-- <Form *ngIf="choice" (ngSubmit)="updateChoice()" enctype="multipart/form-data">
   <h2>Mon Choix </h2>
-  <!-- <div><span>id: </span> {{choice.id}} </div> -->
   <div>
-    <!-- <div *ngIf="person">
-      <input type="hidden" value="{{ person.id }}">
-    </div> -->
     <div *ngIf="choice.sport">
       <label>sport:
         <input class="form-control" [(ngModel)]="choice.sport.name" placeholder="sportname" />
-        <!-- <select formControlName="id" [(ngModel)]="choice.sport.name">
+        <select formControlName="id" [(ngModel)]="choice.sport.name">
           <option *ngFor="let sport of sportList" [value]="sport.id">{{sport.name}}</option>
-        </select> -->
+        </select>
       </label><br />
     </div>
     <div *ngIf="choice.level">
       <label>level:
-        <input class="form-control" [(ngModel)]="choice.level.name" placeholder="levelName" />
-        <!-- <select formControlName="id" [(ngModel)]="choice.level.name">
+         <input class="form-control" [(ngModel)]="choice.level.name" placeholder="levelName" /> 
+        <select formControlName="id" [(ngModel)]="choice.level.name">
           <option [value]="1">débutant</option>
           <option [value]="2">intermédiaire</option>
           <option [value]="3">confirmé</option>
-        </select> -->
-      </label><br />
-    </div>
+        </select>
+      </label><br /> -->
+<!-- </div>
     <div *ngFor="let place of choice.places; let i=index">
       <label>places:
         <input class="form-control" [(ngModel)]="choice.places[i].name" [placeholder]="place.name" />
@@ -31,6 +27,31 @@
 
     <button class="btn btn-info" (click)="goBack()"> Précedant </button>&nbsp;
     <button class="btn btn-success" (click)="updateChoice()"> Enregistrer </button><br />
+  </div> -->
+<!-- <pre>{{ choicesForm.value | json }}</pre> -->
+<!-- </Form> -->
+<form [formGroup]="choicesForm" (ngSubmit)="updateChoice()">
+  <div class="form-group" formGroupName="sport">
+    <label>Type de Sport</label>
+    <select formControlName="id">
+      <option *ngFor="let sport of sportList" [value]="sport.id">{{sport.name}}</option>
+    </select>
   </div>
-  <!-- <pre>{{ choicesForm.value | json }}</pre> -->
-</Form>
+  <div formGroupName="level">
+    <label>votre niveau</label>
+    <select formControlName="id">
+      <option [value]="1">débutant</option>
+      <option [value]="2">intermédiaire</option>
+      <option [value]="3">confirmé</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Lieu</label>
+    <select formControlName="places" multiple>
+      <option *ngFor="let place of currentSportplacesList" [value]="place.id">{{place.name}}</option>
+    </select>
+  </div>
+  <button class="btn btn-info" (click)="goBack()"> Précedant </button>&nbsp;
+  <button class="btn btn-success" type="submit"> Enregistrer </button>
+  <pre>{{ choicesForm.value | json }}</pre>
+</form>

@@ -40,7 +40,6 @@ export class AddPersonComponent implements OnInit {
       this.sportService.getSportPlacesList(val).subscribe(
         placeList => {
           this.currentSportplacesList = placeList;
-          console.log("cruurent ", this.currentSportplacesList)
         }
       );
     })
@@ -78,7 +77,6 @@ export class AddPersonComponent implements OnInit {
           choice = this.personForm.value;
           this.choiceService.addChoice(choice)
             .subscribe(data => {
-              console.log('new Choice', data);
               this.initForm();
             });
         }

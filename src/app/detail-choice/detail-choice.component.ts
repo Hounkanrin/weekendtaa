@@ -15,7 +15,7 @@ import { SportService } from '../service/sport-service/sport.service';
   styleUrls: ['./detail-choice.component.css']
 })
 export class DetailChoiceComponent implements OnInit {
-  @Input() choice: Choice;
+  choice: Choice;
   personId: Person;
   sportList: Sport[];
   currentSportplacesList: Place[];
@@ -38,9 +38,8 @@ export class DetailChoiceComponent implements OnInit {
   async ngOnInit() {
     this.initForm();
     this.sportList = await this.sportService.getSports().toPromise();
-    //this.placesList = await this.placeService.getPlaces().toPromise();
     this.f.sport.valueChanges.subscribe(val => {
-      this.sportService.getSportPlacesList(val).subscribe(
+      this.sportService.getSportPlacesList(val.id).subscribe(
         placeList => {
           this.currentSportplacesList = placeList;
         }
@@ -52,36 +51,37 @@ export class DetailChoiceComponent implements OnInit {
   initForm() {
     this.getChoice();
     this.choicesForm = this.fb.group({
+      id: ['24'],
       person: this.fb.group({
-        id: [this.choice.person, Validators.required]
-      }),
-      sport: this.fb.group({
-        id: [this.choice.sport, Validators.required],
+        id: ['22', Validators.required]
       }),
       level: this.fb.group({
-        id: [this.choice.level, Validators.required],
+        id: ['', Validators.required],
       }),
-      places: [[this.choice.places], Validators.required]
+      sport: this.fb.group({
+        id: ['', Validators.required],
+      }),
+      places: [[Validators.required]]
     })
   }
   getChoice(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.choiceService.getChoice(id)
       .subscribe(choice => {
-        console.log(choice);
         this.choice = choice
       });
   }
 
   updateChoice(): void {
-    console.log("choix", this.choicesForm.value);
     let choice = new Choice();
     const places = this.choicesForm.value.places.map(item => Object.assign({ id: item }));
+    this.choicesForm.value.places = places;
     choice = this.choicesForm.value;
     this.choiceService.updateChoice(choice)
-      .subscribe(choice => {
-        if (choice.id > 0) {
-          this.choiceService.getChoiceByPerson(choice.person.id)
+      .subscribe(choices => {
+        if (choices.id > 0) {
+          this.choiceService.getChoiceByPerson(choices.person.id)
+          this.goBack();
 
         } else {
           // erreur

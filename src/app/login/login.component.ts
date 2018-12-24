@@ -28,14 +28,8 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.appService.authenticate(this.loginForm.value);
-    //   this.router.navigateByUrl('/');
-    // });
-    // return false
-    if (this.appService.authenticated) {
-      this.baseUrl
-      //TODO faire la redirection vers la page d'accueil
-    }
+    console.log(this.loginForm.value);
+    this.appService.login(this.loginForm.value);
   }
 
 }

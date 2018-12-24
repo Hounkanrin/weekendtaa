@@ -21,7 +21,6 @@ import { AddChoiceComponent } from './add-choice/add-choice.component';
 import { PlaceComponent } from './place/place.component';
 import { ChoicePersonComponent } from './choice-person/choice-person.component';
 import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
 import { AppService } from './app.service';
 import { PlaceService } from './service/place-service/place.service';
 import { UpdatePersonComponent } from './update-person/update-person.component';
@@ -49,7 +48,6 @@ import { AddSportComponent } from './add-sport/add-sport.component';
     AddChoiceComponent,
     ChoicePersonComponent,
     LoginComponent,
-    HomeComponent,
     AddPlaceComponent,
     PlaceDetailComponent,
     AddSportComponent,

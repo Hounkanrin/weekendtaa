@@ -7,13 +7,13 @@ import { Place } from '../../model/place';
   providedIn: 'root'
 })
 export class PlaceService {
-  private placeUrl = 'places/';
+  private placeUrl = 'places';
   constructor(
     private http: HttpClient,
   ) { }
 
   getPlaces(): Observable<Place[]> {
-    const url = this.placeUrl + '/';
+    const url = this.placeUrl;
     return this.http.get<Place[]>(url);
   }
   getPlace(id: number): Observable<Place> {
@@ -22,7 +22,8 @@ export class PlaceService {
   }
 
   addPlace(place: Place): Observable<Place> {
-    const url = `${this.placeUrl}create`;
+    const url = `${this.placeUrl}/create`;
+    console.log(url)
     return this.http.post<Place>(url, place);
   }
 
@@ -35,7 +36,7 @@ export class PlaceService {
 
   deletePlace(place: Place | number): Observable<Boolean> {
     const id = typeof place === 'number' ? place : place.id;
-    const url = `${this.placeUrl}delete/${id}`;
+    const url = `${this.placeUrl}/delete/${id}`;
     return this.http.delete<Boolean>(url);
   }
 

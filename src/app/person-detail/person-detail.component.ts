@@ -14,7 +14,6 @@ export class PersonDetailComponent implements OnInit {
 
   @Input() person: Person;
   message: string;
-  //defaultPic: string = "../../assets/images/pic-default..jpeg";
 
   choice: Choice;
   constructor(

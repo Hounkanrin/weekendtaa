@@ -18,7 +18,10 @@ export class DashboardComponent implements OnInit {
 
   getSports(): void {
     this.sportService.getSports()
-      .subscribe(sports => this.sports = sports.slice(1, 5));
+      .subscribe(sports => {
+        console.log(sports);
+        this.sports = sports.slice(1, 5);
+      });
   }
 
 }

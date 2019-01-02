@@ -7,7 +7,7 @@ import { Place } from '../../model/place';
   providedIn: 'root'
 })
 export class PlaceService {
-  private placeUrl = 'places';
+  private placeUrl = 'places/';
   constructor(
     private http: HttpClient,
   ) { }

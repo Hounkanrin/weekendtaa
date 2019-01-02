@@ -27,7 +27,8 @@ export class AppService {
     return 'sports/forLogin';
   }
 
-  login(credentials: any) {
+  login(credentials: any): boolean {
+    let auth = false;
     const userKey = btoa(credentials.email + ':' + credentials.password);
     sessionStorage.setItem(this.loginPassSession, userKey);
     this.sportService.getSportForLogin().subscribe(sp => {
@@ -35,9 +36,11 @@ export class AppService {
       sessionStorage.setItem(this.sessionId, userKey);
       // redirige
       console.log('je suis connecté');
+      auth = true;
     }, error => {
       console.log(error);
     });
+    return auth;
   }
 
   isConnected(): boolean {

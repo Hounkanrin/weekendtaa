@@ -8,13 +8,15 @@
   </tr>
   <tr class="sports" *ngFor="let sport of sports">
     <td>{{ sport.name }}</td>
-    <td></td>
     <td>
-      <button class="btn btn-info" routerLink="/detail/{{sport.id}}" routerLinkActive="active">Editer</button>
-    </td>
-    <td>
-      <button class="btn btn-danger" title="delete-sport" (click)="delete(sport)">Supprimer</button>
-    </td>
+  <tr *ngFor="let place of sport.places; let i=index">{{ sport.places[i].name}}</tr>
+  </td>
+  <td>
+    <button class="btn btn-info" routerLink="/detail/{{sport.id}}" routerLinkActive="active">Editer</button>
+  </td>
+  <td>
+    <button class="btn btn-danger" title="delete-sport" (click)="delete(sport)">Supprimer</button>
+  </td>
   </tr>
 </table>
 <nav>

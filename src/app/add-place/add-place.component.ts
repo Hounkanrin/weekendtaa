@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Place } from '../model/place';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PlaceService } from '../service/place-service/place.service';
-import {PersonService} from '../service/person-services/person.service';
+import { PersonService } from '../service/person-services/person.service';
 
 @Component({
   selector: 'app-add-place',
@@ -34,20 +34,17 @@ export class AddPlaceComponent implements OnInit {
   }
 
   addPlace() {
-    console.log('placeForm', this.placeForm.value);
-    console.log('name', this.placeForm);
     this.placeService.addPlace(this.placeForm.value.place)
       .subscribe(place => {
         if (place.id === null) {
           alert('La ville existe déjà');
         }
-        console.log('newPlaceId', place.name);
         this.placeService.addPlace(place);
         this.goBack();
       });
   }
 
-   goBack() {
+  goBack() {
     this.personService.goBack();
   }
 }

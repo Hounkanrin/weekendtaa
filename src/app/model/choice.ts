@@ -16,5 +16,5 @@ export class Choice {
   places: Place[];
   choiceDate: Date;
   lastUpdate: Date;
-  /*places?: any[];*/
+
 }

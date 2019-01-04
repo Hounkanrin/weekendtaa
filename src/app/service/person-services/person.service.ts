@@ -12,7 +12,6 @@ import { MessageService } from '../message-service/message.service';
   providedIn: 'root'
 })
 export class PersonService {
-
   constructor(
     private messageService: MessageService,
     private location: Location,
@@ -27,12 +26,13 @@ export class PersonService {
   private personsUrl = 'persons/';
 
   /**Methods */
+
   getPersons(): Observable<Person[]> {
     return this.http.get<Person[]>(this.personsUrl);
   }
 
   getPerson(id: number): Observable<Person> {
-    const url = `${this.personsUrl}/${id}`;
+    const url = `${this.personsUrl}${id}`;
     return this.http.get<Person>(url);
   }
 
@@ -44,16 +44,12 @@ export class PersonService {
 
   updatePerson(person: Person | FormData): Observable<any> {
     const url = `${this.personsUrl}update`;
-    console.log("urlUpdate", `${this.personsUrl}update `);
-    console.log("person to update", person);
     return this.http.put<Person>(url, person);
   }
 
   deletePerson(person: Person | number): Observable<Boolean> {
     const id = typeof person === 'number' ? person : person.id;
     const url = `${this.personsUrl}delete/${id}`;
-
-    console.log("urlDelete", url);
     return this.http.delete<Boolean>(url);
   }
 

@@ -15,7 +15,6 @@ export class ChoicePersonComponent implements OnInit {
 
   personId: number;
   sport: Sport;
-  // currentSportplacesList: Place[];
   places: Place[];
   choices: Choice;
   constructor(
@@ -32,7 +31,6 @@ export class ChoicePersonComponent implements OnInit {
     this.personId = +this.route.snapshot.paramMap.get('id');
     this.choiceService.getChoiceByPerson(this.personId)
       .subscribe(choice => {
-        console.log(choice)
         this.choices = choice
       })
   }

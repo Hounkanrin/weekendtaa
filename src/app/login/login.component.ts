@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { AppService } from '../app.service';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { PersonService } from '../service/person-services/person.service';
 
 @Component({
   selector: 'app-login',
@@ -9,20 +10,35 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  credentials = { username: '', password: '' };
 
-  constructor(private app: AppService, private http: HttpClient,
-    private router: Router) { }
+  isAuth: boolean;
+  loginForm: FormGroup;
+  baseUrl: 'persons/';
+
+  constructor(private fb: FormBuilder, private appService: AppService, private personService: PersonService, private router: Router, ) { }
 
   ngOnInit() {
+    this.initForm();
   }
 
-  // login() {
-  //   this.app.authenticate(this.credentials, () => {
-  //     this.router.navigateByUrl('/');
-  //   });
-  //   return false;
-  // }
+  initForm() {
+    this.loginForm = this.fb.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+    });
 
+
+  }
+
+  login() {
+    this.appService.login(this.loginForm.value);
+    this.isAuth = this.appService.login(this.loginForm.value);
+    this.router.navigate(['dashboard']);
+  }
+
+  isAuthenticated() {
+    return this.isAuth;
+
+  }
 
 }

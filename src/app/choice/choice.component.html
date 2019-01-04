@@ -8,7 +8,7 @@
     <th>Activité</th>
     <th>Niveau</th>
     <th>Lieu</th>
-    <th>Editer</th>
+    <!-- <th>Editer</th> -->
     <th>Supprimer</th>
   </tr>
   <tr class="choices" *ngFor="let choice of choices">
@@ -22,9 +22,9 @@
   <tr *ngFor="let place of choice.places; let i=index">{{ choice.places[i].name}}</tr>
   </td>
 
-  <td>
+  <!-- <td>
     <button class="btn btn-info" routerLink="/details/{{choice.id}}" routerLinkActive="active">Editer</button>
-  </td>
+  </td> -->
   <td>
     <button class="btn btn-danger" title="delete-choice" (click)="deleteChoice(choice)">Supprimer</button>
   </td>

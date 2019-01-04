@@ -13,12 +13,15 @@ import { PlaceComponent } from './place/place.component';
 import { UpdatePersonComponent } from './update-person/update-person.component';
 import { AddChoiceComponent } from './add-choice/add-choice.component';
 import { ChoicePersonComponent } from './choice-person/choice-person.component';
+import { LoginComponent } from './login/login.component';
 import { AddPlaceComponent } from './add-place/add-place.component';
 import { PlaceDetailComponent } from './place-detail/place-detail.component';
 import { AddSportComponent } from './add-sport/add-sport.component';
 
 
+
 const routes: Routes = [
+  { path: 'login', component: LoginComponent },
   { path: 'sports', component: SportsComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },

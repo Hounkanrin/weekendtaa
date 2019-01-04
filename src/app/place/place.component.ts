@@ -1,8 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Place } from '../model/place';
 import { PlaceService } from '../service/place-service/place.service';
-import {log} from 'util';
-import {PersonService} from '../service/person-services/person.service';
+import { log } from 'util';
+import { PersonService } from '../service/person-services/person.service';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class PlaceComponent implements OnInit {
   @Input() place: Place;
   message: string;
   constructor(private placeService: PlaceService,
-              private personService: PersonService
+    private personService: PersonService
   ) { }
 
   ngOnInit() {
@@ -30,13 +30,11 @@ export class PlaceComponent implements OnInit {
   }
 
   update(place: Place) {
-    console.log('update', place);
     return this.placeService.updatePlace(place)
       .subscribe(() => this.message = 'Lieu mis à jour');
   }
 
   deletePlace(place: Place): void {
-    console.log('delplace', place);
     this.places = this.places.filter(p => p !== place);
     this.placeService.deletePlace(place).subscribe();
     // this.placeService.deletePlace(this.place.id)

@@ -8,7 +8,6 @@ import { SportDetailComponent } from './sport-detail/sport-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { from } from 'rxjs';
 import { SportService } from './service/sport-service/sport.service';
 import { HttpRequestIntercept } from './httpRequestInterceptor';
 import { ChoiceComponent } from './choice/choice.component';
@@ -21,6 +20,8 @@ import { DetailChoiceComponent } from './detail-choice/detail-choice.component';
 import { AddChoiceComponent } from './add-choice/add-choice.component';
 import { PlaceComponent } from './place/place.component';
 import { ChoicePersonComponent } from './choice-person/choice-person.component';
+import { LoginComponent } from './login/login.component';
+import { AppService } from './app.service';
 import { PlaceService } from './service/place-service/place.service';
 import { UpdatePersonComponent } from './update-person/update-person.component';
 import { AddPlaceComponent } from './add-place/add-place.component';
@@ -46,7 +47,7 @@ import { AddSportComponent } from './add-sport/add-sport.component';
     UpdatePersonComponent,
     AddChoiceComponent,
     ChoicePersonComponent,
-    AddPlaceComponent,
+    LoginComponent,
     AddPlaceComponent,
     PlaceDetailComponent,
     AddSportComponent,
@@ -60,7 +61,7 @@ import { AddSportComponent } from './add-sport/add-sport.component';
     HttpClientModule,
 
   ],
-  providers: [SportService, PersonService, ChoiceService, PlaceService,
+  providers: [SportService, PersonService, ChoiceService, PlaceService, AppService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpRequestIntercept,

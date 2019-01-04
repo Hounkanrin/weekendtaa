@@ -18,7 +18,6 @@ export class AddPersonComponent implements OnInit {
   persons: Person[] = [];
   newPerson: Person = new Person();
   sportList: Sport[];
-  placesList: Place[];
   currentSportplacesList: Place[];
   personForm: FormGroup;
 
@@ -35,7 +34,6 @@ export class AddPersonComponent implements OnInit {
   async ngOnInit() {
     this.initForm();
     this.sportList = await this.sportService.getSports().toPromise();
-    //this.placesList = await this.placeService.getPlaces().toPromise();
     this.f.sport.valueChanges.subscribe(val => {
       this.sportService.getSportPlacesList(val).subscribe(
         placeList => {
@@ -64,11 +62,9 @@ export class AddPersonComponent implements OnInit {
   addPerson() {
     this.personService.addPerson(this.personForm.value.person)
       .subscribe(person => {
-        console.log('newPersonId', person.id);
         if (person.id == null) {
-          return;
+          return console.error("person id nul");
         } else {
-          console.log('Choice');
           let choice = new Choice();
           this.personForm.value.person = person;
           this.personForm.value.level = { id: this.personForm.value.level };
@@ -78,7 +74,7 @@ export class AddPersonComponent implements OnInit {
           choice = this.personForm.value;
           this.choiceService.addChoice(choice)
             .subscribe(data => {
-              console.log('new Choice', data);
+              //console.log('new Choice', data);
               this.initForm();
             });
         }

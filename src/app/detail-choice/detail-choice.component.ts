@@ -27,39 +27,46 @@ export class DetailChoiceComponent implements OnInit {
   get f() {
     return this.choicesForm.controls;
   }
+
+
   constructor(
     private route: ActivatedRoute,
     private choiceService: ChoiceService,
-    private location: Location,
     private sportService: SportService,
+    private location: Location,
     private fb: FormBuilder
   ) { }
 
   async ngOnInit() {
+    this.getChoice();
+    // this.personId = this.route.snapshot.paramMap.get('id');
+
     this.initForm();
+
     this.sportList = await this.sportService.getSports().toPromise();
-    //this.placesList = await this.placeService.getPlaces().toPromise();
+    console.log("ffdfdffd ", this.sportList)
     this.f.sport.valueChanges.subscribe(val => {
-      this.sportService.getSportPlacesList(val).subscribe(
+      this.sportService.getSportPlacesList(val.id as number).subscribe(
         placeList => {
           this.currentSportplacesList = placeList;
         }
       );
     })
-
   }
 
+
+
   initForm() {
-    this.getChoice();
+
     this.choicesForm = this.fb.group({
       person: this.fb.group({
-        id: [this.choice.person, Validators.required]
+        id: [this.choice.person.id, Validators.required]
       }),
       sport: this.fb.group({
-        id: [this.choice.sport, Validators.required],
+        id: [this.choice.sport.id, Validators.required],
       }),
       level: this.fb.group({
-        id: [this.choice.level, Validators.required],
+        id: [this.choice.level.id, Validators.required],
       }),
       places: [[this.choice.places], Validators.required]
     })

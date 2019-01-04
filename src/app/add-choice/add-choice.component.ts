@@ -68,8 +68,6 @@ export class AddChoiceComponent implements OnInit {
   }
 
   addChoice() {
-
-    console.log(this.choiceForm.value);
     let choice = new Choice();
     const places = this.choiceForm.value.places.map(item => Object.assign({ id: item }));
     this.choiceForm.value.places = places;

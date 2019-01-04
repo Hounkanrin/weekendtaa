@@ -42,14 +42,13 @@ export class AddSportComponent implements OnInit {
       const places = this.addSportForm.value.places.map(item => Object.assign({ id: item }));
       this.addSportForm.value.places = places;
       sport = this.addSportForm.value;
-      console.log("sporajou ", sport)
       this.sportService.addSport(sport)
         .subscribe(data => {
-          //this.sports.push();
           this.sportService.getSports();
           this.initForm();
         });
     }
 
   }
+
 }

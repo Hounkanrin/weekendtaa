@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { AppService } from '../app.service';
 import { Router } from '@angular/router';
+import { PersonService } from '../service/person-services/person.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   baseUrl: 'persons/';
 
-  constructor(private fb: FormBuilder, private appService: AppService, private router: Router, ) { }
+  constructor(private fb: FormBuilder, private appService: AppService, private personService: PersonService, private router: Router, ) { }
 
   ngOnInit() {
     this.initForm();
@@ -30,7 +31,6 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log(this.loginForm.value);
     this.appService.login(this.loginForm.value);
     this.isAuth = this.appService.login(this.loginForm.value);
     this.router.navigate(['dashboard']);

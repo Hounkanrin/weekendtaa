@@ -8,6 +8,7 @@ import { Sport } from '../model/sport';
 import { Place } from '../model/place';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Level } from '../model/level';
+import { SportService } from '../service/sport-service/sport.service';
 @Component({
   selector: 'app-detail-choice',
   templateUrl: './detail-choice.component.html',
@@ -23,27 +24,51 @@ export class DetailChoiceComponent implements OnInit {
   sport: Sport;
   level: Level;
 
+  get f() {
+    return this.choicesForm.controls;
+  }
+
 
   constructor(
     private route: ActivatedRoute,
     private choiceService: ChoiceService,
+    private sportService: SportService,
     private location: Location,
     private fb: FormBuilder
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.getChoice();
+    // this.personId = this.route.snapshot.paramMap.get('id');
+
+    this.initForm();
+
+    this.sportList = await this.sportService.getSports().toPromise();
+    console.log("ffdfdffd ", this.sportList)
+    this.f.sport.valueChanges.subscribe(val => {
+      this.sportService.getSportPlacesList(val.id as number).subscribe(
+        placeList => {
+          this.currentSportplacesList = placeList;
+        }
+      );
+    })
+  }
+
+
+
+  initForm() {
+
     this.choicesForm = this.fb.group({
       person: this.fb.group({
-        id: [this.personId, Validators.required]
+        id: [this.choice.person.id, Validators.required]
       }),
       sport: this.fb.group({
-        id: [this.sport, Validators.required],
+        id: [this.choice.sport.id, Validators.required],
       }),
       level: this.fb.group({
-        id: [this.level, Validators.required],
+        id: [this.choice.level.id, Validators.required],
       }),
-      places: [[this.sportPlace], Validators.required]
+      places: [[this.choice.places], Validators.required]
     })
   }
   getChoice(): void {

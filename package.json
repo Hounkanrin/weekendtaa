@@ -24,7 +24,8 @@
     "angular-in-memory-web-api": "^0.6.1",
     "core-js": "^2.5.4",
     "rxjs": "~6.2.0",
-    "zone.js": "~0.8.26"
+    "zone.js": "~0.8.26",
+    "@auth0/angular-jwt": "latest"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.8.0",

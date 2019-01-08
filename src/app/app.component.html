@@ -1,28 +1,19 @@
 <div class="app" style="text-align:center">
   <img width="300" alt="Angular Logo" src="../assets/images/sport1.jpeg">
-  <h1>Welcome to {{ title }}!</h1>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/dashboard">Accueil</a>
     <ul class="nav nav-pills">
-      <li><a routerLinkActive="active" routerLink="/login">Login</a></li>
+      <li><a routerLinkActive="active" routerLink="/login">Se connecter</a></li>
       <li><a (click)="logout()">Déconnexion</a></li>
-      <li> <a routerLink="/add-person">Ajouter une personne</a></li>
+      <li> <a routerLink="/add-person">S'inscrire</a></li>
     </ul>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- <div class="container"> -->
-    <!-- <ul class="nav nav-pills">
-        <li><a routerLinkActive="active" routerLink="/login">Login</a></li>
-        <!-- <li><a (click)="logout()">Logout</a></li> -->
-    <!-- <li> <a routerLink="/add-person">Ajouter une personne</a></li>
-      </ul>
-      </div> -->
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" [class.invisible]="isConnected() === false">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" href="persons">Personnes</a>
@@ -41,6 +32,12 @@
           <a class="nav-link" href="choices">Choix</a>
         </li>
       </ul>
+    </div>
+    <div *ngIf="appService.isConnected()">
+      <i>Vous êtes connecté</i>
+    </div>
+    <div *ngIf="appService.isNotConnected()">
+      <i>Vous êtes déconnecté</i>
     </div>
   </nav>
 

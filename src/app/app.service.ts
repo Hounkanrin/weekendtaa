@@ -11,6 +11,7 @@ export class AppService {
   private def_pass = 'viviane';
   public loginPassSession = 'loginPassSession';
   public sessionId = 'sessionID';
+  private roles: Array<any> = new Array<any>();
   private con_url = '';
 
   constructor(private http: HttpClient, private sportService: SportService) { }
@@ -43,9 +44,32 @@ export class AppService {
     return auth;
   }
 
+  // islogin() {
+  //   if (this.login(credentials)) {
+  //     return true;
+  //   }
+  // }
+  loadCredentialsUser() {
+    return sessionStorage.getItem('token');
+  }
+
+  saveCredentialsUser(jwt: string) {
+    sessionStorage.setItem('token', jwt);
+  }
+
   isConnected(): boolean {
     const userKey = sessionStorage.getItem(this.sessionId);
     return userKey && userKey.length > 0;
+  }
+
+  isNotConnected(): boolean {
+    if (sessionStorage.length === 0) {
+      return true;
+    }
+  }
+
+  logout() {
+    sessionStorage.clear();
   }
 
 }

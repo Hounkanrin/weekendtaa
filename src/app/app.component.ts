@@ -10,20 +10,34 @@ import { finalize } from 'rxjs/operators';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
-  title = 'the management app for your week-end';
+  title = 'l\'Application Week End Planning';
   gretting = {};
-  constructor(private app: AppService, private http: HttpClient, private router: Router) {
+  constructor(
+    private appService: AppService,
+    private http: HttpClient,
+    private router: Router) {
     //http.get('resource').subscribe(data => this.gretting = data);
     //this.app.authenticate(undefined);
-
   }
-  logout() {
-    this.http.post('logout', {}).pipe(
-      finalize(() => {
-        // this.app.authenticated = false;
-        this.router.navigateByUrl('/login');
-      })).subscribe();
 
+  isConnected() {
+    return this.appService.isConnected();
+  }
+
+  isNotConneted() {
+    return this.appService.isNotConnected();
+  }
+
+  // isLogout() {
+  //   if(this.logout()) {
+  //     return true;
+  //   }
+  // }
+
+  logout() {
+    console.log("Je suis deconnectéd");
+    return this.appService.logout();
   }
 }

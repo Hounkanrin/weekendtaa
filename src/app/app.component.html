@@ -4,17 +4,18 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/dashboard">Accueil</a>
     <ul class="nav nav-pills">
-      <li><a routerLinkActive="active" routerLink="/login">Se connecter</a></li>
-      <li><a (click)="logout()">Déconnexion</a></li>
-      <li> <a routerLink="/add-person">S'inscrire</a></li>
+      <li><a routerLinkActive="active" routerLink="/login" *ngIf="!isAuth">Se connecter</a></li>
+      <!--<li><a (click)="logout()" *ngIf="appService.isConnected()">Déconnexion</a></li>-->
+      <li> <a routerLink="/add-person" *ngIf="!isAuth">S'inscrire</a></li>
     </ul>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent" [class.invisible]="isConnected() === false">
-      <ul class="navbar-nav mr-auto">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav mr-auto" *ngIf="isAuth">
         <li class="nav-item active">
           <a routerLinkActive="active" routerLink="/choice-person/{{userId}}" (click)="getChoiceByPerson(userId)">choice</a>
         </li>
@@ -33,19 +34,25 @@
           <a routerLinkActive="active" routerLink="/choices">Choix</a>
         </li>
       </ul>
+
+      <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-outline-danger my-2 my-sm-0" *ngIf="appService.isConnected()" (click)="logout()">Se
+          déconnecter</button>
+      </form>
+
     </div>
-    <div *ngIf="appService.isConnected()">
-      <i>Vous êtes connecté</i>
-    </div>
-    <div *ngIf="appService.isNotConnected()">
-      <i>Vous êtes déconnecté</i>
-    </div>
+
   </nav>
 
+  <div class="" *ngIf="isAuth">
+    <i>Vous êtes connecté</i>
+  </div>
+
+  <div class="" *ngIf="!isAuth">
+    Vous êtes déconnecté
+  </div>
 
   <router-outlet></router-outlet>
   <app-messages></app-messages>
-
-
 
 </div>

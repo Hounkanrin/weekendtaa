@@ -28,7 +28,7 @@ export class SportService {
 
   /** Get sports list on the server */
   getSports(): Observable<Sport[]> {
-    //const headers = new HttpHeaders({ Authorization: 'Basic YUBnbWFpbC5jb206dml2aWFuZQ==' });
+    // const headers = new HttpHeaders({ Authorization: 'Basic YUBnbWFpbC5jb206dml2aWFuZQ==' });
     return this.http.get<Sport[]>(this.sportsUrl);
   }
   /** Get sport by id on the server */

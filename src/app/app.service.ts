@@ -4,6 +4,7 @@ import { SportService } from './service/sport-service/sport.service';
 import { PersonService } from './service/person-services/person.service';
 import { Person } from './model/person';
 import { ChoiceService } from './service/choice-service/choice.service';
+import { of, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,9 @@ export class AppService {
 
   private roles: Array<any> = new Array<any>();
   private con_url = '';
+  private _isAuth: boolean;
+  isAuthSubject = new Subject<boolean>;
+
 
 
   constructor(private http: HttpClient, private sportService: SportService,
@@ -36,8 +40,9 @@ export class AppService {
     return 'persons/forLogin';
   }
 
-  login(credentials: any): boolean {
-    let auth = false;
+  login(credentials: any) {
+    this._isAuth = false;
+    this.emitIsAuth();
     const userKey = btoa(credentials.email + ':' + credentials.password);
     sessionStorage.setItem(this.loginPassSession, userKey);
     this.personService.getPersonEmail(credentials.email).subscribe(user => {
@@ -45,26 +50,15 @@ export class AppService {
       sessionStorage.setItem(this.sessionId, userKey);
       sessionStorage.setItem(this.sessionUserId, '' + user.id);
       // redirige
-      auth = true;
+      // auth = true;
       // this.choiceService.getChoiceByPerson(user.id)
       console.log('je suis connecté');
     }, error => {
       console.log(error);
+      console.log('je suis connecté');
+      this._isAuth = true;
+      this.emitIsAuth();
     });
-    return auth;
-  }
-
-  // islogin() {
-  //   if (this.login(credentials)) {
-  //     return true;
-  //   }
-  // }
-  loadCredentialsUser() {
-    return sessionStorage.getItem('token');
-  }
-
-  saveCredentialsUser(jwt: string) {
-    sessionStorage.setItem('token', jwt);
   }
 
   isConnected(): boolean {
@@ -80,6 +74,12 @@ export class AppService {
 
   logout() {
     sessionStorage.clear();
+    this._isAuth = false;
+    this.emitIsAuth();
+  }
+
+  emitIsAuth() {
+    this.isAuthSubject.next(this._isAuth);
   }
 
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SportService } from './service/sport-service/sport.service';
+import { of, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,9 @@ export class AppService {
   public sessionId = 'sessionID';
   private roles: Array<any> = new Array<any>();
   private con_url = '';
+  private _isAuth: boolean;
+  isAuthSubject = new Subject<boolean>;
+
 
   constructor(private http: HttpClient, private sportService: SportService) { }
 
@@ -28,33 +32,21 @@ export class AppService {
     return 'sports/forLogin';
   }
 
-  login(credentials: any): boolean {
-    let auth = false;
+  login(credentials: any) {
+    this._isAuth = false;
+    this.emitIsAuth();
     const userKey = btoa(credentials.email + ':' + credentials.password);
     sessionStorage.setItem(this.loginPassSession, userKey);
     this.sportService.getSportForLogin().subscribe(sp => {
       sessionStorage.clear();
       sessionStorage.setItem(this.sessionId, userKey);
-      // redirige
       console.log('je suis connecté');
-      auth = true;
-    }, error => {
-      console.log(error);
+      this._isAuth = true;
+      this.emitIsAuth();
+    }, err => {
+      this._isAuth = false;
+      this.emitIsAuth();
     });
-    return auth;
-  }
-
-  // islogin() {
-  //   if (this.login(credentials)) {
-  //     return true;
-  //   }
-  // }
-  loadCredentialsUser() {
-    return sessionStorage.getItem('token');
-  }
-
-  saveCredentialsUser(jwt: string) {
-    sessionStorage.setItem('token', jwt);
   }
 
   isConnected(): boolean {
@@ -70,6 +62,12 @@ export class AppService {
 
   logout() {
     sessionStorage.clear();
+    this._isAuth = false;
+    this.emitIsAuth();
+  }
+
+  emitIsAuth() {
+    this.isAuthSubject.next(this._isAuth);
   }
 
 }

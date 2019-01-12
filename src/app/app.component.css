@@ -19,11 +19,19 @@ nav a {
 }
 nav a:visited, a:link {
   color: #607d8b;
-} */
+}
+
 nav a:hover {
   color: #039be5;
   background-color: #cfd8dc;
 }
+
 nav a.active {
   color: #039be5;
+}
+
+.status{
+  /*background-color: #039be5;*/
+  justify-content: end;
+  float: right;
 }

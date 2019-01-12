@@ -1,4 +1,5 @@
 <form class="container" [formGroup]="loginForm" (ngSubmit)="login();" enctype="multipart/form-data">
+  <div *ngIf="submited && !isAuth">Email ou mot de passe éronné</div>
   <div class="form-group">
     <label for="email"><b>Email</b></label>
     <input type="text" id="email" formControlName="email" placeholder="Enter email" />

@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AppService } from './app.service';
 import { finalize } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -11,33 +12,34 @@ import { finalize } from 'rxjs/operators';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
+
+
   title = 'l\'Application Week End Planning';
   gretting = {};
+  isAuth: boolean;
+  isAuthSouscription: Subscription;
+
   constructor(
     private appService: AppService,
     private http: HttpClient,
     private router: Router) {
-    //http.get('resource').subscribe(data => this.gretting = data);
-    //this.app.authenticate(undefined);
+    // http.get('resource').subscribe(data => this.gretting = data);
+    // this.app.authenticate(undefined);
   }
 
-  isConnected() {
-    return this.appService.isConnected();
+  ngOnInit() {
+    this.isAuthSouscription = this.appService.isAuthSubject.subscribe(data => {
+      this.isAuth = data;
+    });
   }
 
-  isNotConneted() {
-    return this.appService.isNotConnected();
+  ngOnDestroy() {
+    this.isAuthSouscription.unsubscribe()
   }
-
-  // isLogout() {
-  //   if(this.logout()) {
-  //     return true;
-  //   }
-  // }
 
   logout() {
-    console.log("Je suis deconnectéd");
+    console.log('Je suis deconnectéd');
     return this.appService.logout();
   }
 }

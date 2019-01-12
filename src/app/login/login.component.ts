@@ -1,23 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { AppService } from '../app.service';
 import { Router } from '@angular/router';
 import { PersonService } from '../service/person-services/person.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   isAuth: boolean;
+  submited: boolean;
   loginForm: FormGroup;
   baseUrl: 'persons/';
+
+  isAuthSouscription: Subscription;
 
   constructor(private fb: FormBuilder, private appService: AppService, private personService: PersonService, private router: Router, ) { }
 
   ngOnInit() {
+    this.submited = false;
+    this.isAuthSouscription = this.appService.isAuthSubject.subscribe(data => {
+      this.isAuth = data;
+      if (this.isAuth) {
+        // alert();
+        this.router.navigate(['dashboard']);
+      }
+
+    });
     this.initForm();
   }
 
@@ -29,13 +42,12 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.submited = true;
     this.appService.login(this.loginForm.value);
-    this.isAuth = this.appService.login(this.loginForm.value);
-    this.router.navigate(['dashboard']);
   }
 
-  isAuthenticated() {
-    return this.isAuth;
+  ngOnDestroy() {
+    this.isAuthSouscription.unsubscribe()
   }
 
 }

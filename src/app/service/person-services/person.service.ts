@@ -57,7 +57,7 @@ export class PersonService {
     this.location.back();
   }
   getPersonEmail(email: String): Observable<Person> {
-    const url = `${this.personsUrl}${email}`;
+    const url = `${this.personsUrl}forLogin/${email}`;
     return this.http.get<Person>(url);
   }
 }

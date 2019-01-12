@@ -26,8 +26,6 @@ export class LoginComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required],
     });
-
-
   }
 
   login() {
@@ -38,7 +36,6 @@ export class LoginComponent implements OnInit {
 
   isAuthenticated() {
     return this.isAuth;
-
   }
 
 }

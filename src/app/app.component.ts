@@ -13,17 +13,13 @@ import { finalize } from 'rxjs/operators';
 export class AppComponent {
   title = 'the management app for your week-end';
   gretting = {};
-  constructor(private app: AppService, private http: HttpClient, private router: Router) {
-    //http.get('resource').subscribe(data => this.gretting = data);
-    //this.app.authenticate(undefined);
-
+  constructor(private appService: AppService, private http: HttpClient, private router: Router) {
   }
   logout() {
-    this.http.post('logout', {}).pipe(
-      finalize(() => {
-        // this.app.authenticated = false;
-        this.router.navigateByUrl('/login');
-      })).subscribe();
-
+    this.appService.logout()
+    //console.log("je suis deconnecté ")
+    this.router.navigateByUrl('/login');
   }
+
+
 }

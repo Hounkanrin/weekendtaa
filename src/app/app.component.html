@@ -7,64 +7,37 @@
     <ul class="nav nav-pills">
       <li><a routerLinkActive="active" routerLink="/login">Login</a></li>
       <li><a (click)="logout()">Déconnexion</a></li>
-      <li> <a routerLink="/add-person">Ajouter une personne</a></li>
+      <li> <a routerLink="/add-person"> S'inscrire </a></li>
     </ul>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- <div class="container"> -->
-    <!-- <ul class="nav nav-pills">
-        <li><a routerLinkActive="active" routerLink="/login">Login</a></li>
-        <!-- <li><a (click)="logout()">Logout</a></li> -->
-    <!-- <li> <a routerLink="/add-person">Ajouter une personne</a></li>
-      </ul>
-      </div> -->
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="persons">Personnes</a>
+          <a routerLinkActive="active" routerLink="/persons">Profil</a>
+        </li>
+        <li class="nav-item active">
+          <a routerLinkActive="active" routerLink="/persons">Personnes</a>
         </li>
 
         <li class="nav-item active">
-          <a class="nav-link" href="sports">Sport</a>
+          <a routerLinkActive="active" routerLink="/sports">Sport</a>
         </li>
 
         <li class="nav-item active">
-          <a class="nav-link" href="places">Lieu</a>
+          <a routerLinkActive="active" routerLink="/places">Lieu</a>
         </li>
-
-
         <li class="nav-item active">
-          <a class="nav-link" href="choices">Choix</a>
+          <a routerLinkActive="active" routerLink="/choices">Choix</a>
         </li>
       </ul>
     </div>
   </nav>
 
-  <!--   
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link navbar-brand" href="/dashboard">Page d'accueil</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="persons">Personnes</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="sports">Sport</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="places">Lieu</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/choices">choices</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/places">Lieu</a>
-      </li>
-    </ul> -->
+
   <router-outlet></router-outlet>
   <app-messages></app-messages>
 

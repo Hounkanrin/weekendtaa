@@ -23,7 +23,6 @@ export class PersonDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('ngoninit');
     this.getPerson();
   }
 

@@ -29,28 +29,32 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.userId = sessionStorage.getItem('sessionUser')
-    console.log(this.userId);
+    this.isAuthSouscription = this.appService.isAuthSubject.subscribe(data => {
+      this.isAuth = data;
+      this.userId = sessionStorage.getItem('sessionUser');
+      console.log('userId', this.userId);
+    });
+    // this.userId = sessionStorage.getItem('sessionUser');
   }
 
   getChoiceByPerson(userId) {
   }
 
-  isConnected() {
-    return this.appService.isConnected();
-    this.isAuthSouscription = this.appService.isAuthSubject.subscribe(data => {
-      this.isAuth = data;
-    });
-  }
+  // isConnected() {
+  //   return this.appService.isConnected();
+  //   this.isAuthSouscription = this.appService.isAuthSubject.subscribe(data => {
+  //     this.isAuth = data;
+  //   });
+  // }
 
-  ngOnDestroy() {
-    this.isAuthSouscription.unsubscribe();
-  }
 
   logout() {
     console.log('Je suis deconnectéd');
     return this.appService.logout();
   }
 
+  ngOnDestroy() {
+    this.isAuthSouscription.unsubscribe();
+  }
 
 }

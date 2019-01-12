@@ -25,11 +25,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.submited = false;
     this.isAuthSouscription = this.appService.isAuthSubject.subscribe(data => {
       this.isAuth = data;
+      console.log("isAuth", this.isAuth);
       if (this.isAuth) {
+        console.log("isAuth", this.isAuth);
         // alert();
         this.router.navigate(['dashboard']);
       }
-
     });
     this.initForm();
   }
@@ -47,7 +48,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.isAuthSouscription.unsubscribe()
+    this.isAuthSouscription.unsubscribe();
   }
 
 }

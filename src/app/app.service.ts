@@ -20,9 +20,7 @@ export class AppService {
   private roles: Array<any> = new Array<any>();
   private con_url = '';
   private _isAuth: boolean;
-  isAuthSubject = new Subject<boolean>;
-
-
+  isAuthSubject = new Subject<boolean>();
 
   constructor(private http: HttpClient, private sportService: SportService,
     private personService: PersonService,
@@ -41,22 +39,21 @@ export class AppService {
   }
 
   login(credentials: any) {
+    console.log("Try to login");
     this._isAuth = false;
     this.emitIsAuth();
     const userKey = btoa(credentials.email + ':' + credentials.password);
     sessionStorage.setItem(this.loginPassSession, userKey);
+    console.log("Try to login1");
     this.personService.getPersonEmail(credentials.email).subscribe(user => {
       sessionStorage.clear();
       sessionStorage.setItem(this.sessionId, userKey);
       sessionStorage.setItem(this.sessionUserId, '' + user.id);
-      // redirige
-      // auth = true;
-      // this.choiceService.getChoiceByPerson(user.id)
-      console.log('je suis connecté');
-    }, error => {
-      console.log(error);
       console.log('je suis connecté');
       this._isAuth = true;
+      this.emitIsAuth();
+    }, error => {
+      this._isAuth = false;
       this.emitIsAuth();
     });
   }

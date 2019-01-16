@@ -10,3 +10,11 @@ Dans le terminal, exécutez ces commands:
 <i>npm install</i>
 <i>ng serve --open</i>
 L'application s'ouvrira dans le navigateur sur le port 4200
+
+Une fois l'application lancée (côté back et front), vous pouvez vous connecter en tant: 
+    -admin:     
+        email: a@gmail.com  
+        mot de passe: viviane
+    -user
+        email: mama@gmail.com
+        mot de passe: mama

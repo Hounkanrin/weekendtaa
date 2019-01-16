@@ -5,6 +5,9 @@ import { PersonService } from './service/person-services/person.service';
 import { Person } from './model/person';
 import { ChoiceService } from './service/choice-service/choice.service';
 import { of, Observable, Subject } from 'rxjs';
+import 'rxjs/add/operator/map';
+import { map } from 'rxjs/operators';
+import { Role } from './model/role';
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +20,11 @@ export class AppService {
   public sessionUserId = 'sessionUser';
   public sessionId = 'sessionID';
 
-  private roles: Array<any> = new Array<any>();
   private con_url = '';
   private _isAuth: boolean;
+  private _isAdmin: boolean;
   isAuthSubject = new Subject<boolean>();
+  isAdminSubject = new Subject<boolean>();
 
   constructor(private http: HttpClient, private sportService: SportService,
     private personService: PersonService,
@@ -39,23 +43,55 @@ export class AppService {
   }
 
   login(credentials: any) {
-    console.log("Try to login");
     this._isAuth = false;
+    // this._isAdmin = false;
     this.emitIsAuth();
     const userKey = btoa(credentials.email + ':' + credentials.password);
     sessionStorage.setItem(this.loginPassSession, userKey);
-    console.log("Try to login1");
     this.personService.getPersonEmail(credentials.email).subscribe(user => {
       sessionStorage.clear();
       sessionStorage.setItem(this.sessionId, userKey);
       sessionStorage.setItem(this.sessionUserId, '' + user.id);
+      /*user roles*/
+      console.log('user', user);
+      console.log('user.role', user.roles);
+      const userRoles: Array<Role> = user.roles;
+      const userRoleName = userRoles.map(function (role) {
+        return role.name;
+      });
+      console.log('role,', userRoleName);
+      /**/
       console.log('je suis connecté');
       this._isAuth = true;
+      this._isAdmin = this.isAdmin(userRoles);
       this.emitIsAuth();
+      const isConnectedUserAdmin = this.isAdmin(userRoles);
+      console.log('isConnectedUserAdmin', isConnectedUserAdmin);
     }, error => {
       this._isAuth = false;
       this.emitIsAuth();
     });
+  }
+
+  logout() {
+    sessionStorage.clear();
+    this._isAuth = false;
+    this.emitIsAuth();
+  }
+
+  emitIsAuth() {
+    this.isAuthSubject.next(this._isAuth);
+    this.isAdminSubject.next(this._isAdmin);
+  }
+
+  isAdmin(roles: Array<Role>): boolean {
+    let roleAdminFound = false;
+    roles.forEach(function (role) {
+      if (role.name === 'admin') {
+        roleAdminFound = true;
+      }
+    });
+    return roleAdminFound;
   }
 
   isConnected(): boolean {
@@ -69,14 +105,7 @@ export class AppService {
     }
   }
 
-  logout() {
-    sessionStorage.clear();
-    this._isAuth = false;
-    this.emitIsAuth();
-  }
-
-  emitIsAuth() {
-    this.isAuthSubject.next(this._isAuth);
-  }
-
 }
+
+
+

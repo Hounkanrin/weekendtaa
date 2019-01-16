@@ -30,8 +30,8 @@ export class PersonDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.personService.getPerson(id)
       .subscribe(person => {
-        this.person = person
-      })
+        this.person = person;
+      });
   }
 
   updatePerson(): void {
@@ -45,8 +45,10 @@ export class PersonDetailComponent implements OnInit {
 
   // methode a revoir
   deletePerson(): void {
+    alert("personne a supprimer");
     this.personService.deletePerson(this.person.id)
       .subscribe(() => this.message = 'Personne supprimée');
+    alert("consif");
     this.goBack();
   }
 

@@ -2,7 +2,7 @@
   <img width="300" alt="Angular Logo" src="../assets/images/sport1.jpeg">
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/dashboard">Accueil</a>
+    <!-- <a class="navbar-brand" href="/dashboard">Accueil</a> -->
     <ul class="nav nav-pills">
       <li><a routerLinkActive="active" routerLink="/login" *ngIf="!isAuth">Se connecter</a></li>
       <!--<li><a (click)="logout()" *ngIf="appService.isConnected()">Déconnexion</a></li>-->
@@ -17,9 +17,15 @@
 
       <ul class="navbar-nav mr-auto" *ngIf="isAuth">
         <li class="nav-item active">
-          <a routerLinkActive="active" routerLink="/choice-person/{{userId}}" (click)="getChoiceByPerson(userId)">choice</a>
+          <a routerLinkActive="active" routerLink="/person-detail/{{userId}}">Mon
+            profil</a>
         </li>
         <li class="nav-item active">
+          <a routerLinkActive="active" routerLink="/choice-person/{{userId}}" (click)="getChoiceByPerson(userId)">Mes
+            choix</a>
+        </li>
+        <!-- http://localhost:4200/person-detail/1 -->
+        <li class="nav-item active" *ngIf="isAdmin">
           <a routerLinkActive="active" routerLink="/persons">Personnes</a>
         </li>
 
@@ -30,7 +36,7 @@
         <li class="nav-item active">
           <a routerLinkActive="active" routerLink="/places">Lieu</a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item active" *ngIf="isAdmin">
           <a routerLinkActive="active" routerLink="/choices">Choix</a>
         </li>
       </ul>
@@ -45,6 +51,9 @@
 
   <div class="" *ngIf="isAuth">
     <i>Vous êtes connecté</i>
+  </div>
+  <div class="" *ngIf="isAdmin">
+    <i>Vous êtes admin</i>
   </div>
 
   <div class="" *ngIf="!isAuth">

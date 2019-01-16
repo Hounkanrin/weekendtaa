@@ -18,7 +18,9 @@ export class AppComponent implements OnInit, OnDestroy {
   userId: any;
   gretting = {};
   isAuth: boolean;
+  isAdmin: boolean;
   isAuthSouscription: Subscription;
+  isAdminSouscription: Subscription;
 
   constructor(
     private appService: AppService,
@@ -34,7 +36,10 @@ export class AppComponent implements OnInit, OnDestroy {
       this.userId = sessionStorage.getItem('sessionUser');
       console.log('userId', this.userId);
     });
-    // this.userId = sessionStorage.getItem('sessionUser');
+    this.isAuthSouscription = this.appService.isAdminSubject.subscribe(metadata => {
+      this.isAdmin = metadata;
+      console.log('userAdminOrUser', metadata);
+    });
   }
 
   getChoiceByPerson(userId) {
